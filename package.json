@@ -1,0 +1,36 @@
+{
+  "name": "mysita-web",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@element-plus/icons-vue": "^2.3.1",
+    "@mapbox/mapbox-gl-directions": "^4.3.1",
+    "@turf/turf": "^7.1.0",
+    "@unhead/vue": "^1.11.6",
+    "axios": "^1.7.7",
+    "element-plus": "^2.8.4",
+    "github-markdown-css": "^5.7.0",
+    "mapbox-gl": "^3.7.0",
+    "markdown-it-anchor": "^9.2.0",
+    "markdown-it-highlightjs": "^4.2.0",
+    "markdown-it-prism": "^2.3.0",
+    "ol": "^10.2.1",
+    "pinia": "^2.1.7",
+    "unplugin-vue-markdown": "^0.26.2",
+    "vue": "^3.4.29",
+    "vue-router": "^4.3.3"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.5",
+    "@vitejs/plugin-vue-jsx": "^4.0.0",
+    "unplugin-auto-import": "^0.18.3",
+    "unplugin-vue-components": "^0.27.4",
+    "vite": "^5.3.1"
+  }
+}

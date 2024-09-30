@@ -1,0 +1,30 @@
+.tips {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(133, 112, 117, 0.7);
+  padding: 5px;
+  border-radius: 5px;
+  color: rgb(255, 244, 246);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.tips .el-icon {
+  margin-left: 10px;
+  font-size: 20px;
+  background-color: rgb(249, 218, 224);
+  color: rgb(133, 112, 117);
+  border-radius: 15%;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.tips .el-icon:hover {
+  background-color: rgb(133, 112, 117);
+  color: rgb(249, 218, 224);
+}
