@@ -103,7 +103,7 @@
     overflow-x: auto;
   }
   .example-item {
-    width: 210px;
+    width: 240px;
     height: 175px;
     border-radius: 15px;
     display: flex;
@@ -134,8 +134,8 @@
   }
   .example-item img {
     padding: 10px 10px 0px 10px;
-    width: 210px;
-    height: 160px;
+    width: 230px;
+    height: 180px;
     border-radius: 15px;
   }
   .example-item span {
@@ -178,7 +178,7 @@
   }
 
   .example-desc {
-    width: 210px;
+    width: 240px;
     height: 175px;
     border-radius: 15px;
     display: flex;

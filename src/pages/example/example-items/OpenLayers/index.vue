@@ -15,6 +15,7 @@
     <div class="show-window">
       <span v-if="!selectedExample">选择一个示例以展示</span>
       <BasicMap v-if="selectedExample === 'basic_map'" />
+      <MappingTools v-if="selectedExample === 'draw_measure'"></MappingTools>
       <div
         class="example-code-link"
         @click="openLink">
@@ -28,15 +29,22 @@
 <script setup>
   import { ref } from 'vue';
   import BasicMap from './BasicMap.vue';
+  import MappingTools from './MappingTools.vue';
 
   const selectedExample = ref('');
 
   const exampleList = ref([
     {
-      name: '基础地图加载',
-      img: '',
+      name: '基础地图加载/切换',
+      img: '/src/assets/img/example/openlayers/map-toggle.png',
       key: 'basic_map',
-      src: 'https://t0.tianditu.gov.cn/img_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=img&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILEMATRIX={z}&TILEROW={y}&TILECOL={x}&tk=0cf416af893d04d5a9f77ea5e49029ff',
+      src: 'https://github.com/Quincy0c0/mysita-web/blob/main/src/pages/example/example-items/OpenLayers/BasicMap.vue',
+    },
+    {
+      name: '绘制和测量',
+      img: '/src/assets/img/example/openlayers/draw-measure.png',
+      key: 'draw_measure',
+      src: 'https://github.com/Quincy0c0/mysita-web/blob/main/src/pages/example/example-items/OpenLayers/MappingTools.vue',
     },
   ]);
 
@@ -79,7 +87,7 @@
     overflow-x: auto;
   }
   .example-item {
-    width: 210px;
+    width: 240px;
     height: 175px;
     border-radius: 15px;
     display: flex;
@@ -110,8 +118,8 @@
   }
   .example-item img {
     padding: 10px 10px 0px 10px;
-    width: 210px;
-    height: 160px;
+    width: 230px;
+    height: 180px;
     border-radius: 15px;
   }
   .example-item span {
@@ -154,7 +162,7 @@
   }
 
   .example-desc {
-    width: 210px;
+    width: 240px;
     height: 175px;
     border-radius: 15px;
     display: flex;
