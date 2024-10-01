@@ -56,7 +56,7 @@
     //添加地图
     map.value = new mapboxgl.Map({
       container: 'map', //div的id
-      style: gao, //高德地图
+      style: gao,
       center: [113.63035, 34.73831], //地图中心
       zoom: 12, //缩放等级
       projection: 'globe', //地图模式 球体

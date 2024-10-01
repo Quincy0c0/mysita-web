@@ -10,6 +10,7 @@
         <img :src="item.img" />
         <span>{{ item.name }}</span>
       </div>
+      <p class="example-desc">更多案例正在开发中···</p>
     </div>
     <div class="show-window">
       <span v-if="!selectedExample">选择一个示例以展示</span>
@@ -17,6 +18,12 @@
       <BuildingLoad v-if="selectedExample === 'building_load'"> </BuildingLoad>
       <RoderGuider v-if="selectedExample === 'path_nav'"></RoderGuider>
       <DrawLine v-if="selectedExample === 'line_nav'"></DrawLine>
+      <div
+        class="example-code-link"
+        @click="openLink">
+        <i class="iconfont icon-code"></i>
+        <span>查看源码</span>
+      </div>
     </div>
   </div>
 </template>
@@ -35,25 +42,41 @@
       name: '省市信息悬浮弹窗',
       img: '/src/assets/img/example/mapbox/province-hover-img.png',
       key: 'province_hover',
+      src: 'https://github.com/Quincy0c0/mysita-web/blob/main/src/pages/example/example-items/Mapbox/ProviceHover.vue',
     },
     {
       name: '建筑白膜加载',
       img: '/src/assets/img/example/mapbox/building-load-img.png',
       key: 'building_load',
+      src: 'https://github.com/Quincy0c0/mysita-web/blob/main/src/pages/example/example-items/Mapbox/BuildingLoad.vue',
     },
     {
       name: '路径导航',
       img: '/src/assets/img/example/mapbox/path-nav-img.png',
       key: 'path_nav',
+      src: 'https://github.com/Quincy0c0/mysita-web/blob/main/src/pages/example/example-items/Mapbox/RoderGuider.vue',
     },
     {
       name: '线段绘制和漫游',
       img: '/src/assets/img/example/mapbox/line-nav-img.png',
       key: 'line_nav',
+      src: 'https://github.com/Quincy0c0/mysita-web/blob/main/src/pages/example/example-items/Mapbox/DrawLine.vue',
     },
   ]);
+
+  const openLink = () => {
+    exampleList.value.map((item) => {
+      if (item.key === selectedExample.value) {
+        if (item.src) {
+          window.open(item.src, '_blank');
+        }
+      }
+    });
+  };
 </script>
 <style scoped>
+  @import '/src/assets//style/icon.css';
+
   .show-window {
     position: relative;
     width: 100%;
@@ -105,7 +128,7 @@
   }
   .example-item:hover {
     background-color: rgb(241, 154, 174);
-    color: rgb(249, 223, 227);
+    color: rgb(133, 112, 117);
     animation: example-item-hover 0.3s ease-in-out;
     border: 2px solid rgb(249, 223, 227);
   }
@@ -121,5 +144,59 @@
   .selected {
     background-color: rgb(133, 112, 117);
     color: rgb(249, 223, 227);
+  }
+
+  .example-code-link {
+    padding: 10px;
+    display: flex;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    color: rgb(249, 223, 227);
+    background-color: rgba(133, 112, 117, 0.7);
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .example-code-link i {
+    font-size: 20px;
+    margin-right: 5px;
+  }
+
+  .example-code-link span {
+    font-size: 14px;
+  }
+  .example-code-link:hover {
+    color: rgb(133, 112, 117);
+    background-color: rgba(241, 154, 174);
+    cursor: pointer;
+    animation: example-item-hover 0.3s ease-in-out;
+  }
+
+  .example-code-link:hover span {
+    color: rgb(133, 112, 117);
+  }
+
+  .example-desc {
+    width: 210px;
+    height: 175px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    overflow: hidden;
+    background-color: transparent;
+    border: 2px solid rgba(133, 112, 117, 0.3);
+    margin: 0 10px;
+    font-size: 12px;
+  }
+  .example-desc:hover {
+    background-color: rgb(241, 154, 174);
+    color: rgb(133, 112, 117);
+    animation: example-item-hover 0.3s ease-in-out;
+    border: 2px solid rgb(249, 223, 227);
   }
 </style>

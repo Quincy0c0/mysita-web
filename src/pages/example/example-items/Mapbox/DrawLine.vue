@@ -18,7 +18,7 @@
       <span>速度：</span>
       <el-slider
         v-model="AnimeTimer"
-        max="9999"
+        :max="9999"
         show-input />
     </div>
   </div>
@@ -95,10 +95,6 @@
 
   const startMove = () => {
     const $map = map.value;
-
-    animeMarker.value = new mapboxgl.Marker({
-      color: 'orange',
-    });
 
     let distance = turf.length(geometryLine.value, { units: 'kilometers' });
 
@@ -261,7 +257,6 @@
 
       const addFeatures = function (e) {
         const { lng, lat } = e.target.getLngLat();
-        console.log(lng, lat);
         const $map = map.value;
         let id;
         if (pointSource.value.data.features.length > 0) {
@@ -296,6 +291,10 @@
       };
 
       marker.value.on('dragend', addFeatures);
+
+      animeMarker.value = new mapboxgl.Marker({
+        color: 'orange',
+      });
     });
   });
 

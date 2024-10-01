@@ -31,14 +31,13 @@
   const router = useRouter();
 
   const toExample = (path) => {
-    console.log(path);
     router.push(path);
   };
 
   const leftGuiderList = ref([
     {
       key: 'example_1',
-      name: '地图类',
+      name: '地图',
       index: '1',
       children: [
         {
@@ -64,7 +63,7 @@
     {
       key: 'example_2',
       index: '2',
-      name: '三维可视化',
+      name: 'Three.js',
       children: [
         { index: '2-1', name: '材质', key: 'example_2_1' },
         { index: '2-2', name: '物体交互', key: 'example_2_2' },
