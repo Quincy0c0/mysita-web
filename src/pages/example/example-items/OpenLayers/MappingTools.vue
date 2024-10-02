@@ -38,6 +38,14 @@
       color="#f4dbe0"
       >清空画布</el-button
     >
+
+    <button
+      @click="MappingArea"
+      color="#e49eae"
+      class="btn"
+      :class="isMapping ? 'activeBtn' : ''">
+      查看面积/距离
+    </button>
   </div>
   <div
     v-show="drawType !== 'none'"
@@ -48,39 +56,52 @@
     }">
     点击左键进行绘制，右键取消绘制
   </div>
+
+  <div
+    class="mappingInfo"
+    v-show="polygonVal && isMapping">
+    {{ polygonVal }}
+  </div>
 </template>
 
 <script setup>
-  import { onMounted, ref, toRaw, watch, onBeforeUnmount } from 'vue';
-  //基础组件
+  import { onMounted, ref, onBeforeUnmount } from 'vue';
+  //地图加载
   import 'ol/ol.css';
   import Map from 'ol/Map';
   import View from 'ol/View';
   import TileLayer from 'ol/layer/Tile';
   import OSM from 'ol/source/OSM';
   import { fromLonLat } from 'ol/proj';
+  //图层
   import { Vector as VectorLayer } from 'ol/layer';
   import { Vector as VectorSource } from 'ol/source';
+  //绘制
   import { Circle as CircleStyle, Fill, Stroke, Style } from 'ol/style';
   import { Draw } from 'ol/interaction';
   import { Polygon } from 'ol/geom';
 
+  //地图初始化
   const map = ref(null);
-
   const draw = ref(null);
-
   const drawSource = ref(null);
-
   const drawLayer = ref(null);
+  const normalStyle = ref(null);
+  const lightStyle = ref(null);
 
+  //和页面交互存储的数据
   const drawType = ref('none');
+  const isMapping = ref(false);
+  const polygonVal = ref('');
 
+  //提示框信息
   const tipsPosition = ref({
     left: 0,
     top: 0,
     display: 'none',
   });
 
+  //画笔
   const drawEvent = (type) => {
     if (drawType.value === type) {
       drawType.value = 'none';
@@ -127,6 +148,55 @@
     }
   };
 
+  //测量
+  const getArea = (event) => {
+    drawType.value = 'none';
+
+    const allFeatures = drawSource.value.getFeatures();
+    allFeatures.forEach((feature) => {
+      feature.setStyle(normalStyle.value);
+    });
+
+    const feature = map.value.forEachFeatureAtPixel(event.pixel, (feature) => {
+      return feature;
+    });
+
+    if (feature) {
+      feature.setStyle(lightStyle.value);
+      const type = feature.getGeometry().getType();
+
+      if (type === 'Circle') {
+        const radius = feature.getGeometry().getRadius();
+        const area = Math.PI * radius * radius;
+        polygonVal.value = '面积：' + (area / 1000000).toFixed(2) + '平方千米';
+      } else if (type === 'Polygon') {
+        polygonVal.value =
+          '面积：' +
+          (feature.getGeometry().getArea() / 1000000).toFixed(2) +
+          '平方千米';
+      } else if (type == 'LineString') {
+        polygonVal.value =
+          '距离：' +
+          (feature.getGeometry().getLength() / 1000).toFixed(2) +
+          '千米';
+      }
+    } else {
+      polygonVal.value = '';
+    }
+  };
+
+  //是否在测量
+  const MappingArea = () => {
+    map.value.removeInteraction(draw.value);
+    isMapping.value = !isMapping.value;
+    if (isMapping.value) {
+      map.value.on('pointermove', getArea);
+    } else {
+      map.value.un('pointermove', getArea);
+    }
+  };
+
+  //操作提示
   const getMousePosition = (event) => {
     if (drawType.value !== 'none') {
       tipsPosition.value.left = event.clientX - 250;
@@ -161,25 +231,43 @@
       }),
     });
 
+    normalStyle.value = new Style({
+      fill: new Fill({
+        color: 'rgba(129, 113, 117, 0.6)',
+      }),
+      stroke: new Stroke({
+        color: 'rgb(228, 158, 174)',
+        width: 4,
+      }),
+      image: new CircleStyle({
+        radius: 7,
+        fill: new Fill({
+          color: 'rgb(228, 158, 174)',
+        }),
+      }),
+    });
+
+    lightStyle.value = new Style({
+      fill: new Fill({
+        color: 'rgba(253, 243, 245, 0.6)',
+      }),
+      stroke: new Stroke({
+        color: 'rgb(78, 172, 248)',
+        width: 4,
+      }),
+      image: new CircleStyle({
+        radius: 7,
+        fill: new Fill({
+          color: 'rgb(78, 172, 248)',
+        }),
+      }),
+    });
+
     drawSource.value = new VectorSource();
 
     drawLayer.value = new VectorLayer({
       source: drawSource.value,
-      style: new Style({
-        fill: new Fill({
-          color: 'rgba(129, 113, 117, 0.6)',
-        }),
-        stroke: new Stroke({
-          color: 'rgb(228, 158, 174)',
-          width: 4,
-        }),
-        image: new CircleStyle({
-          radius: 7,
-          fill: new Fill({
-            color: 'rgb(228, 158, 174)',
-          }),
-        }),
-      }),
+      style: normalStyle.value,
     });
 
     map.value.addLayer(drawLayer.value);
@@ -251,15 +339,44 @@
     top: 10px;
     right: 10px;
     z-index: 999;
-    background-color: #fff;
     border-radius: 5px;
     display: flex;
-    flex-direction: column;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   }
 
   .active {
     background-color: rgb(244, 219, 224) !important;
     /* border-radius: 5px; */
+  }
+
+  .btn {
+    margin-left: 10px;
+    width: 170px;
+    height: 30px;
+    padding: 5px;
+    background-color: rgb(1, 175, 255);
+    border: 1px solid #ccc;
+    outline: none;
+    cursor: pointer;
+    border-radius: 5px;
+    color: rgb(0, 0, 0);
+  }
+
+  .activeBtn {
+    background-color: rgb(0, 255, 157);
+  }
+
+  .mappingInfo {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 999;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(244, 219, 224, 0.7);
+    padding: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    color: rgb(129, 113, 117);
   }
 </style>

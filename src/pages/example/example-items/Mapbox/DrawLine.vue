@@ -315,7 +315,7 @@
 
   .controls {
     position: absolute;
-    top: 20px;
+    top: 50px;
     left: 20px;
     z-index: 9;
     display: flex;

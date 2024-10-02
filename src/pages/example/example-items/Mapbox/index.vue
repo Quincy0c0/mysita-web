@@ -42,6 +42,7 @@
       name: '省市信息悬浮弹窗',
       img: '/src/assets/img/example/mapbox/province-hover-img.png',
       key: 'province_hover',
+
       src: 'https://github.com/Quincy0c0/mysita-web/blob/main/src/pages/example/example-items/Mapbox/ProviceHover.vue',
     },
     {
