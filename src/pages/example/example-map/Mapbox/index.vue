@@ -34,6 +34,8 @@
   import RoderGuider from './RoderGuider.vue';
   import DrawLine from './DrawLine.vue';
   import { ref } from 'vue';
+  import { useExampleStore } from '@/stores/example';
+  import { storeToRefs } from 'pinia';
 
   const selectedExample = ref('');
 
@@ -42,7 +44,6 @@
       name: '省市信息悬浮弹窗',
       img: '/src/assets/img/example/mapbox/province-hover-img.png',
       key: 'province_hover',
-
       src: 'https://github.com/Quincy0c0/mysita-web/blob/main/src/pages/example/example-items/Mapbox/ProviceHover.vue',
     },
     {
@@ -64,6 +65,10 @@
       src: 'https://github.com/Quincy0c0/mysita-web/blob/main/src/pages/example/example-items/Mapbox/DrawLine.vue',
     },
   ]);
+
+  const { exampleMenuList } = storeToRefs(useExampleStore());
+
+  exampleMenuList.value.map.mapbox = exampleList.value;
 
   const openLink = () => {
     exampleList.value.map((item) => {

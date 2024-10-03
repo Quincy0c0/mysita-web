@@ -18,19 +18,19 @@ const router = createRouter({
           path: 'mapbox',
           name: 'mapbox',
           component: () =>
-            import('../pages/example/example-items/Mapbox/index.vue'),
+            import('../pages/example/example-map/Mapbox/index.vue'),
         },
         {
           path: 'openlayers',
           name: 'openlayers',
           component: () =>
-            import('../pages/example/example-items/OpenLayers/index.vue'),
+            import('../pages/example/example-map/OpenLayers/index.vue'),
         },
         {
           path: 'cesium',
           name: 'cesium',
           component: () =>
-            import('../pages/example/example-items/Cesium/index.vue'),
+            import('../pages/example/example-map/Cesium/index.vue'),
         },
       ],
     },

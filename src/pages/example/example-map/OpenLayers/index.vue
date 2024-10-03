@@ -16,6 +16,7 @@
       <span v-if="!selectedExample">选择一个示例以展示</span>
       <BasicMap v-if="selectedExample === 'basic_map'" />
       <MappingTools v-if="selectedExample === 'draw_measure'"></MappingTools>
+      <PopupChart v-if="selectedExample === 'popup_chart'"></PopupChart>
       <div
         class="example-code-link"
         @click="openLink">
@@ -27,9 +28,13 @@
 </template>
 
 <script setup>
-  import { ref } from 'vue';
   import BasicMap from './BasicMap.vue';
   import MappingTools from './MappingTools.vue';
+  import PopupChart from './MapChartPopup/index.vue';
+
+  import { ref } from 'vue';
+  import { useExampleStore } from '@/stores/example';
+  import { storeToRefs } from 'pinia';
 
   const selectedExample = ref('');
 
@@ -46,7 +51,16 @@
       key: 'draw_measure',
       src: 'https://github.com/Quincy0c0/mysita-web/blob/main/src/pages/example/example-items/OpenLayers/MappingTools.vue',
     },
+    {
+      name: '弹窗和图表',
+      img: '/src/assets/img/example/openlayers/popup-chart.png',
+      key: 'popup_chart',
+      src: 'https://github.com/Quincy0c0/mysita-web/blob/main/src/pages/example/example-items/OpenLayers/PopupChart.vue',
+    },
   ]);
+
+  const { exampleMenuList } = storeToRefs(useExampleStore());
+  exampleMenuList.value.map.openLayers = exampleList.value;
 
   const openLink = () => {
     exampleList.value.map((item) => {
