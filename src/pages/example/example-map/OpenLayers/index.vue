@@ -55,7 +55,7 @@
       name: '弹窗和图表',
       img: '/src/assets/img/example/openlayers/popup-chart.png',
       key: 'popup_chart',
-      src: 'https://github.com/Quincy0c0/mysita-web/blob/main/src/pages/example/example-items/OpenLayers/PopupChart.vue',
+      src: 'https://github.com/Quincy0c0/mysita-web/blob/main/src/pages/example/example-items/OpenLayers/MapChartPopup/index.vue',
     },
   ]);
 
