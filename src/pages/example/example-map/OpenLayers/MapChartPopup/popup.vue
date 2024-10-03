@@ -1,5 +1,8 @@
 <template>
   <div id="popup">
+    <div class="close">
+      <el-icon @click="closePopup"><Close /></el-icon>
+    </div>
     <div
       ref="chartContainer"
       style="width: 400px; height: 250px"></div>
@@ -7,54 +10,30 @@
 </template>
 
 <script setup>
-  import { ref, watch, nextTick, onUnmounted, onMounted } from 'vue';
+  import {
+    ref,
+    watch,
+    nextTick,
+    onUnmounted,
+    onMounted,
+    defineProps,
+    defineEmits,
+  } from 'vue';
   import * as echarts from 'echarts';
 
   const chartContainer = ref(null);
   const chartInstance = ref(null);
 
-  const chartOptions = ref({
-    title: {
-      text: 'Referer of a Website',
-      subtext: 'Fake Data',
-      left: 'center',
-    },
-    tooltip: {
-      trigger: 'item',
-    },
-    legend: {
-      orient: 'vertical',
-      left: 'left',
-    },
-    series: [
-      {
-        name: 'Access From',
-        type: 'pie',
-        radius: '50%',
-        data: [
-          { value: 1048, name: 'Search Engine' },
-          { value: 735, name: 'Direct' },
-          { value: 580, name: 'Email' },
-          { value: 484, name: 'Union Ads' },
-          { value: 300, name: 'Video Ads' },
-        ],
-        emphasis: {
-          itemStyle: {
-            shadowBlur: 10,
-            shadowOffsetX: 0,
-            shadowColor: 'rgba(0, 0, 0, 0.5)',
-          },
-        },
-      },
-    ],
-  });
+  const { chartOptions } = defineProps(['chartOptions']);
+  const emit = defineEmits(['closeEvent']);
 
-  const { chartShow } = defineProps(['chartShow']);
+  const closePopup = () => {
+    emit('closeEvent'); // 触发父组件的事件
+  };
 
   watch(
-    () => chartShow,
+    () => chartOptions,
     (newVal) => {
-      console.log('newVal', newVal);
       if (newVal) {
         nextTick(() => {
           initChart();
@@ -70,7 +49,7 @@
       chartInstance.value.dispose();
     }
     chartInstance.value = echarts.init(chartContainer.value);
-    const option = chartOptions.value;
+    const option = chartOptions;
     chartInstance.value.setOption(option);
   };
 
@@ -91,6 +70,9 @@
     padding: 10px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
     border-radius: 10px;
+    left: -50%;
+    top: 0%;
+    transform: translate(-50%, 0%);
   }
 
   #popup::before {
@@ -103,5 +85,18 @@
     left: 50%;
     transform: translateX(-50%) rotate(45deg);
     box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.5);
+  }
+
+  .close {
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    position: absolute;
+    z-index: 999;
+  }
+
+  .close:hover {
+    color: red;
+    cursor: pointer;
   }
 </style>
