@@ -32,9 +32,14 @@ const router = createRouter({
           component: () =>
             import('../pages/example/example-map/Cesium/index.vue'),
         },
+        {
+          path: 'three-basic',
+          name: 'three-basic',
+          component: () =>
+            import('../pages/example/example-three/basic/index.vue'),
+        },
       ],
     },
-    ,
   ],
 });
 
