@@ -14,9 +14,7 @@
     </div>
     <div class="show-window">
       <span v-if="!selectedExample">选择一个示例以展示</span>
-      <BasicMap v-if="selectedExample === 'basic_map'" />
-      <MappingTools v-if="selectedExample === 'draw_measure'"></MappingTools>
-      <PopupChart v-if="selectedExample === 'popup_chart'"></PopupChart>
+      <GlassMaterial v-if="selectedExample === 'glassMaterial'" />
       <div
         class="example-code-link"
         @click="openLink">
@@ -28,10 +26,7 @@
 </template>
 
 <script setup>
-  import BasicMap from './BasicMap.vue';
-  import MappingTools from './MappingTools.vue';
-  import PopupChart from './MapChartPopup/index.vue';
-
+  import GlassMaterial from './glassMaterial.vue';
   import { ref } from 'vue';
   import { useExampleStore } from '@/stores/example';
   import { storeToRefs } from 'pinia';
@@ -40,27 +35,14 @@
 
   const exampleList = ref([
     {
-      name: '基础地图加载/切换',
-      img: '/src/assets/img/example/openlayers/map-toggle.png',
-      key: 'basic_map',
-      src: 'https://github.com/Quincy0c0/mysita-web/blob/main/src/pages/example/example-map/OpenLayers/BasicMap.vue',
-    },
-    {
-      name: '绘制和测量',
-      img: '/src/assets/img/example/openlayers/draw-measure.png',
-      key: 'draw_measure',
-      src: 'https://github.com/Quincy0c0/mysita-web/blob/main/src/pages/example/example-map/OpenLayers/MappingTools.vue',
-    },
-    {
-      name: '弹窗和图表',
-      img: '/src/assets/img/example/openlayers/popup-chart.png',
-      key: 'popup_chart',
-      src: 'https://github.com/Quincy0c0/mysita-web/blob/main/src/pages/example/example-map/OpenLayers/MapChartPopup/index.vue',
+      key: 'glassMaterial',
+      name: '玻璃材质',
+      img: '/src/assets/img/example/three/mesh/glassMaterial.png',
+      src: 'https://github.com/Quincy0c0/mysita-web/blob/main/src/pages/example/example-three/material/glassMaterial.vue',
     },
   ]);
 
   const { exampleMenuList } = storeToRefs(useExampleStore());
-  exampleMenuList.value.map.openLayers = exampleList.value;
 
   const openLink = () => {
     exampleList.value.map((item) => {

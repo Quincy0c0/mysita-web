@@ -1,5 +1,6 @@
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';
+import Tres from '@tresjs/core';
 
 import App from './App.vue';
 import router from './router';
@@ -16,5 +17,6 @@ for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
 }
 app.use(createPinia());
 app.use(router);
+app.use(Tres);
 
 app.mount('#app');

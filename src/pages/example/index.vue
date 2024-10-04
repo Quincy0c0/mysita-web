@@ -31,6 +31,7 @@
   const router = useRouter();
 
   const toExample = (path) => {
+    console.log(path);
     router.push(path);
   };
 
@@ -65,9 +66,14 @@
       index: '2',
       name: 'Three.js',
       children: [
-        { index: '2-1', name: '基础', key: 'example_2_1', path: '/example/' },
-        { index: '2-2', name: '物体交互', key: 'example_2_2' },
-        { index: '2-3', name: '效果', key: 'example_2_3' },
+        {
+          index: '2-1',
+          name: '材质',
+          key: 'example_2_1',
+          path: '/example/three-basic',
+        },
+        { index: '2-2', name: '物体交互', key: 'example_2_2', path: '' },
+        { index: '2-3', name: '效果', key: 'example_2_3', path: '' },
       ],
     },
   ]);

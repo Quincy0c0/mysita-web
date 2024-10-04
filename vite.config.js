@@ -6,11 +6,12 @@ import vueJsx from '@vitejs/plugin-vue-jsx';
 import AutoImport from 'unplugin-auto-import/vite';
 import Components from 'unplugin-vue-components/vite';
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
+import { templateCompilerOptions } from '@tresjs/core';
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
-    vue(),
+    vue({ ...templateCompilerOptions }),
     vueJsx(),
     AutoImport({
       resolvers: [ElementPlusResolver()],

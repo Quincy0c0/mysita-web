@@ -24,7 +24,7 @@
 </template>
 
 <script setup>
-  import { ref } from 'vue';
+  import { ref, onMounted } from 'vue';
   import { useRouter } from 'vue-router';
   import { storeToRefs } from 'pinia';
   import { useHomeStore } from './stores/home';
@@ -61,6 +61,17 @@
   const toGitHub = () => {
     window.open('https://github.com/Quincy0c0');
   };
+
+  onMounted(() => {
+    let path = window.location.pathname;
+    path = path.match(/\/\w+/)[0];
+    console.log(path);
+    MenuList.value.map((item) => {
+      if (item.path === path) {
+        selectedMenu.value = item.key;
+      }
+    });
+  });
 </script>
 <style scoped>
   @import url('./assets/style/icon.css');

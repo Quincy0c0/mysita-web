@@ -36,7 +36,7 @@ const router = createRouter({
           path: 'three-basic',
           name: 'three-basic',
           component: () =>
-            import('../pages/example/example-three/basic/index.vue'),
+            import('../pages/example/example-three/material/index.vue'),
         },
       ],
     },

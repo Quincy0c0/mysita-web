@@ -11,10 +11,13 @@
   "dependencies": {
     "@element-plus/icons-vue": "^2.3.1",
     "@mapbox/mapbox-gl-directions": "^4.3.1",
+    "@tresjs/cientos": "^4.0.2",
     "@tresjs/core": "^4.3.0",
+    "@tresjs/leches": "^0.14.0",
     "@turf/turf": "^7.1.0",
     "@unhead/vue": "^1.11.6",
     "axios": "^1.7.7",
+    "dat.gui": "^0.7.9",
     "echarts": "^5.5.1",
     "element-plus": "^2.8.4",
     "github-markdown-css": "^5.7.0",
