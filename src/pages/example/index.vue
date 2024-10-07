@@ -31,7 +31,6 @@
   const router = useRouter();
 
   const toExample = (path) => {
-    console.log(path);
     router.push(path);
   };
 
@@ -70,9 +69,14 @@
           index: '2-1',
           name: '材质',
           key: 'example_2_1',
-          path: '/example/three-basic',
+          path: '/example/three-material',
         },
-        { index: '2-2', name: '物体交互', key: 'example_2_2', path: '' },
+        {
+          index: '2-2',
+          name: '物体交互',
+          key: 'example_2_2',
+          path: '/example/three-interaction',
+        },
         { index: '2-3', name: '粒子效果', key: 'example_2_3', path: '' },
       ],
     },
