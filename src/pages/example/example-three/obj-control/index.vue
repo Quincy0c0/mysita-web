@@ -37,8 +37,8 @@
   const exampleList = ref([
     {
       key: 'HighLightMesh',
-      name: '物体高亮',
-      img: '/src/assets/img/example/three/mesh/highLightMesh.png',
+      name: '鼠标交互高亮',
+      img: '/src/assets/img/example/three/interaction/highLightMesh.png',
       src: 'https://github.com/Quincy0c0/mysita-web/blob/main/src/pages/example/example-three/obj-control/HighLightMesh.vue',
     },
   ]);
