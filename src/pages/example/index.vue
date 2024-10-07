@@ -73,7 +73,7 @@
           path: '/example/three-basic',
         },
         { index: '2-2', name: '物体交互', key: 'example_2_2', path: '' },
-        { index: '2-3', name: '效果', key: 'example_2_3', path: '' },
+        { index: '2-3', name: '粒子效果', key: 'example_2_3', path: '' },
       ],
     },
   ]);

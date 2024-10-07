@@ -60,6 +60,7 @@
   const boxRef = shallowRef();
   const context = ref();
 
+
   const gl = {
     clearColor: '#fff2f5',
     shadows: true,

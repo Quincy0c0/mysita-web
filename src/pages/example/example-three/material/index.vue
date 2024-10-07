@@ -14,7 +14,9 @@
     </div>
     <div class="show-window">
       <span v-if="!selectedExample">选择一个示例以展示</span>
-      <GlassMaterial v-if="selectedExample === 'glassMaterial'" />
+      <GlassMaterial v-if="selectedExample === 'GlassMaterial'" />
+      <Reflector v-if="selectedExample === 'Reflector'" />
+      <CustomMateral v-if="selectedExample === 'CustomMateral'" />
       <div
         class="example-code-link"
         @click="openLink">
@@ -26,7 +28,10 @@
 </template>
 
 <script setup>
-  import GlassMaterial from './glassMaterial.vue';
+  import GlassMaterial from './GlassMaterial.vue';
+  import Reflector from './Reflector.vue';
+  import CustomMateral from './CustomMaterial.vue';
+
   import { ref } from 'vue';
   import { useExampleStore } from '@/stores/example';
   import { storeToRefs } from 'pinia';
@@ -35,10 +40,22 @@
 
   const exampleList = ref([
     {
-      key: 'glassMaterial',
+      key: 'GlassMaterial',
       name: '玻璃材质',
       img: '/src/assets/img/example/three/mesh/glassMaterial.png',
       src: 'https://github.com/Quincy0c0/mysita-web/blob/main/src/pages/example/example-three/material/glassMaterial.vue',
+    },
+    {
+      key: 'Reflector',
+      name: '镜面反射',
+      img: '/src/assets/img/example/three/mesh/reflector.png',
+      src: 'https://github.com/Quincy0c0/mysita-web/blob/main/src/pages/example/example-three/material/Reflector.vue',
+    },
+    {
+      key: 'CustomMateral',
+      name: '自定义材质',
+      img: '/src/assets/img/example/three/mesh/customMaterial.png',
+      src: 'https://github.com/Quincy0c0/mysita-web/blob/main/src/pages/example/example-three/material/CustomMaterial.vue',
     },
   ]);
 
