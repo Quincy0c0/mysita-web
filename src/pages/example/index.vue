@@ -94,7 +94,12 @@
           key: 'example_2_2',
           path: '/example/three-interaction',
         },
-        { index: '2-3', name: '粒子效果', key: 'example_2_3', path: '' },
+        {
+          index: '2-3',
+          name: '粒子效果',
+          key: 'example_2_3',
+          path: '/example/sprite-effect',
+        },
       ],
     },
   ]);

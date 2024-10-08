@@ -17,6 +17,7 @@
       <HighLightMesh v-if="selectedExample === 'HighLightMesh'" />
       <Htmls v-if="selectedExample === 'Htmls'" />
       <HtmlsWeb v-if="selectedExample === 'HtmlsWeb'" />
+      <MeshTransformer v-if="selectedExample === 'MeshTransformer'" />
       <div
         class="example-code-link"
         @click="openLink">
@@ -31,6 +32,7 @@
   import HighLightMesh from './HighLightMesh.vue';
   import Htmls from './Htmls.vue';
   import HtmlsWeb from './HtmlsWeb.vue';
+  import MeshTransformer from './MeshTransformer.vue';
 
   import { ref } from 'vue';
   import { useExampleStore } from '@/stores/example';
@@ -56,6 +58,12 @@
       name: '内嵌网站',
       img: '/src/assets/img/example/three/interaction/htmls-web.png',
       src: 'https://github.com/Quincy0c0/mysita-web/blob/main/src/pages/example/example-three/obj-control/HtmlWeb.vue',
+    },
+    {
+      key: 'MeshTransformer',
+      name: '控制器',
+      img: '/src/assets/img/example/three/interaction/mesh-transformer.png',
+      src: 'https://github.com/Quincy0c0/mysita-web/blob/main/src/pages/example/example-three/obj-control/MeshTransformer.vue',
     },
   ]);
 

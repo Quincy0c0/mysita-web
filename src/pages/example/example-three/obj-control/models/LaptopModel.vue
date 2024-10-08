@@ -17,7 +17,6 @@
 
 <script setup>
   import { Html, useGLTF } from '@tresjs/cientos';
-  import { defineProps } from 'vue';
 
   const { webUrl } = defineProps(['webUrl']);
 

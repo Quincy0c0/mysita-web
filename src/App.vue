@@ -75,8 +75,6 @@
   });
 </script>
 <style scoped>
-  @import url('./assets/style/icon.css');
-
   .app {
     width: 100%;
     height: auto;
@@ -187,4 +185,10 @@
     letter-spacing: 0.05em;
     text-align: center;
   }
+</style>
+
+<style>
+  @import url('/src/assets/style/pane.css');
+
+  @import url('./assets/style/icon.css');
 </style>

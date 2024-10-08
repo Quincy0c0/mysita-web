@@ -10,15 +10,7 @@
 </template>
 
 <script setup>
-  import {
-    ref,
-    watch,
-    nextTick,
-    onUnmounted,
-    onMounted,
-    defineProps,
-    defineEmits,
-  } from 'vue';
+  import { ref, watch, nextTick, onUnmounted, onMounted } from 'vue';
   import * as echarts from 'echarts';
 
   const chartContainer = ref(null);

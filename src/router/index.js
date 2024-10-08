@@ -44,6 +44,13 @@ const router = createRouter({
           component: () =>
             import('../pages/example/example-three/obj-control/index.vue'),
         },
+        {
+          path: 'sprite-effect',
+          name: 'sprite-effect',
+
+          component: () =>
+            import('../pages/example/example-three/sprite-effect/index.vue'),
+        },
       ],
     },
   ],
