@@ -60,7 +60,6 @@
   const boxRef = shallowRef();
   const context = ref();
 
-
   const gl = {
     clearColor: '#fff2f5',
     shadows: true,
@@ -76,7 +75,7 @@
   });
 </script>
 
-<style>
+<style scoped>
   .container {
     width: 100%;
     height: 100%;

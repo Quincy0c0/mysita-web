@@ -3,7 +3,11 @@
     <div class="left-guider">
       <el-menu
         background-color="#fff2f5"
-        text-color="#947075">
+        default-active="1-1"
+        text-color="#817175"
+        active-text-color="#817175"
+        :default-openeds="['1', '2']"
+        popper-effect="dark">
         <el-sub-menu
           v-for="item in leftGuiderList"
           :key="item.key"
@@ -13,25 +17,35 @@
           </template>
           <el-menu-item
             v-for="child in item.children"
-            :key="child.id"
+            :key="child.key"
             :index="child.index"
-            @click="toExample(child.path)">
+            @click="toExample(child.path, child.name)"
+            :style="
+              activeItem === child.name ? 'background-color:#f1c6ce ;' : ''
+            ">
+            <img
+              :src="child.src"
+              class="logo" />
             {{ child.name }}
           </el-menu-item>
         </el-sub-menu>
       </el-menu>
     </div>
-    <main><router-view style="width: 100%; height: 100%"></router-view></main>
+    <main>
+      <router-view style="width: 100%; height: 100%"></router-view>
+    </main>
   </div>
 </template>
 
 <script setup>
-  import { ref } from 'vue';
+  import { ref, onMounted } from 'vue';
   import { useRouter } from 'vue-router';
   const router = useRouter();
+  const activeItem = ref();
 
-  const toExample = (path) => {
+  const toExample = (path, name) => {
     router.push(path);
+    activeItem.value = name;
   };
 
   const leftGuiderList = ref([
@@ -45,18 +59,21 @@
           name: 'OpenLayers',
           key: 'example_1_1',
           path: '/example/openlayers',
+          src: '/src/assets/icons/openlayers.svg',
         },
         {
           index: '1-2',
           name: 'Mapbox',
           key: 'example_1_2',
           path: '/example/mapbox',
+          src: '/src/assets/icons/mapbox.svg',
         },
         {
           index: '1-3',
           name: 'Cesium',
           key: 'example_1_3',
           path: '/example/cesium',
+          src: '/src/assets/icons/cesium.svg',
         },
       ],
     },
@@ -81,6 +98,10 @@
       ],
     },
   ]);
+
+  onMounted(() => {
+    let path = window.location.pathname;
+  });
 </script>
 <style scoped>
   .example-page {
@@ -89,12 +110,18 @@
   }
 
   .left-guider {
-    width: 200px;
+    width: 15%;
   }
   main {
-    width: calc(100% - 200px);
+    width: 85%;
     height: auto;
     padding: 10px;
     border-radius: 15px;
+  }
+
+  .logo {
+    width: 15px;
+    height: 15px;
+    margin-right: 10px;
   }
 </style>

@@ -129,8 +129,8 @@
   });
 </script>
 
-<style>
-  @import '@/assets/style/pane.css';
+<style scoped>
+  @import '/src/assets/style/pane.css';
 
   .container {
     width: 100%;

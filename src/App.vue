@@ -18,7 +18,9 @@
           @click="toGitHub"></i>
       </div>
     </header>
-    <main><router-view></router-view></main>
+    <main>
+      <router-view></router-view>
+    </main>
     <footer>宁ICP备2024005901号</footer>
   </div>
 </template>
@@ -40,7 +42,7 @@
       key: 'home',
     },
     {
-      name: '案例展示',
+      name: '展示',
       path: '/example',
       key: 'example',
     },
@@ -65,7 +67,6 @@
   onMounted(() => {
     let path = window.location.pathname;
     path = path.match(/\/\w+/)[0];
-    console.log(path);
     MenuList.value.map((item) => {
       if (item.path === path) {
         selectedMenu.value = item.key;
@@ -84,9 +85,9 @@
   header {
     position: relative;
     display: flex;
-    margin: 20px;
+    margin: 1ch;
     padding: 10px;
-    background-color: rgba(255, 181, 195, 0.425);
+    background-color: rgba(244, 219, 224, 0.9);
     font-family: 'PingFang SC';
     font-size: 18px;
     font-weight: 400;
@@ -163,7 +164,7 @@
   }
 
   main {
-    margin: 0 30px;
+    margin: 0 25px;
     padding: 10px;
     font-family: 'PingFang SC';
     font-size: 20px;

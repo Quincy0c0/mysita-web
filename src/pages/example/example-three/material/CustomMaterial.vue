@@ -52,7 +52,6 @@
     WobbleAmplitude: 0.03,
     WobbleFrequency: 20,
   });
-  console.log(uniforms.Time);
 
   const materialProps = shallowReactive({
     baseMaterial: Three.MeshBasicMaterial,
@@ -143,8 +142,8 @@
   });
 </script>
 
-<style>
-  @import '@/assets/style/pane.css';
+<style scoped>
+  @import '/src/assets/style/pane.css';
 
   .container {
     width: 100%;
