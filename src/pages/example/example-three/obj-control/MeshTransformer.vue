@@ -56,6 +56,7 @@
 
   const context = ref();
   const paneRef = ref();
+  const pane = ref();
 
   const torusRef = ref();
   const boxRef = ref();
@@ -90,8 +91,6 @@
   const changeSelected = (object) => {
     transformRef.value = object;
   };
-
-  const pane = ref();
 
   const initPane = () => {
     pane.value = new Pane({

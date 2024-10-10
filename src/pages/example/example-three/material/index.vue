@@ -33,8 +33,6 @@
   import CustomMateral from './CustomMaterial.vue';
 
   import { ref } from 'vue';
-  import { useExampleStore } from '@/stores/example';
-  import { storeToRefs } from 'pinia';
 
   const selectedExample = ref('');
 
@@ -58,8 +56,6 @@
       src: 'https://github.com/Quincy0c0/mysita-web/blob/main/src/pages/example/example-three/material/CustomMaterial.vue',
     },
   ]);
-
-  const { exampleMenuList } = storeToRefs(useExampleStore());
 
   const openLink = () => {
     exampleList.value.map((item) => {

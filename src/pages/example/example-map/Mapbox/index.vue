@@ -34,8 +34,6 @@
   import RoderGuider from './RoderGuider.vue';
   import DrawLine from './DrawLine.vue';
   import { ref } from 'vue';
-  import { useExampleStore } from '@/stores/example';
-  import { storeToRefs } from 'pinia';
 
   const selectedExample = ref('');
 
@@ -65,10 +63,6 @@
       src: 'https://github.com/Quincy0c0/mysita-web/blob/main/src/pages/example/example-map/Mapbox/DrawLine.vue',
     },
   ]);
-
-  const { exampleMenuList } = storeToRefs(useExampleStore());
-
-  exampleMenuList.value.map.mapbox = exampleList.value;
 
   const openLink = () => {
     exampleList.value.map((item) => {

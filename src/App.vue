@@ -66,7 +66,14 @@
 
   onMounted(() => {
     let path = window.location.pathname;
-    path = path.match(/\/\w+/)[0];
+    path = path.match(/\/\w+/);
+
+    if (path) {
+      path = path[0];
+    } else {
+      path = '/';
+    }
+
     MenuList.value.map((item) => {
       if (item.path === path) {
         selectedMenu.value = item.key;

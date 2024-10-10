@@ -16,6 +16,7 @@
     "@turf/turf": "^7.1.0",
     "@unhead/vue": "^1.11.6",
     "axios": "^1.7.7",
+    "cesium": "1.99",
     "echarts": "^5.5.1",
     "element-plus": "^2.8.4",
     "mapbox-gl": "^3.7.0",
@@ -23,6 +24,7 @@
     "pinia": "^2.1.7",
     "three": "^0.169.0",
     "tweakpane": "^4.0.4",
+    "vite-plugin-cesium": "^1.2.23",
     "vue": "^3.4.29",
     "vue-router": "^4.3.3"
   },

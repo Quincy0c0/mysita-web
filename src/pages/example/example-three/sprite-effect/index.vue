@@ -15,6 +15,7 @@
     <div class="show-window">
       <span v-if="!selectedExample">选择一个示例以展示</span>
       <PointFlow v-if="selectedExample === 'PointFlow'" />
+      <Snow v-if="selectedExample === 'Snow'" />
       <div
         class="example-code-link"
         @click="openLink">
@@ -27,10 +28,9 @@
 
 <script setup>
   import PointFlow from './PointFlow.vue';
+  import Snow from './Snow.vue';
 
   import { ref } from 'vue';
-  import { useExampleStore } from '@/stores/example';
-  import { storeToRefs } from 'pinia';
 
   const selectedExample = ref('');
 
@@ -41,9 +41,13 @@
       img: '/src/assets/img/example/three/sprite-effect/point-flow.png',
       src: 'https://github.com/Quincy0c0/mysita-web/blob/main/src/pages/example/example-three/sprite-effect/PointFlow.vue',
     },
+    {
+      key: 'Snow',
+      name: '雪花',
+      img: '/src/assets/img/example/three/sprite-effect/snow.png',
+      src: 'https://github.com/Quincy0c0/mysita-web/blob/main/src/pages/example/example-three/sprite-effect/Snow.vue',
+    },
   ]);
-
-  const { exampleMenuList } = storeToRefs(useExampleStore());
 
   const openLink = () => {
     exampleList.value.map((item) => {
