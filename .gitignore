@@ -18,7 +18,7 @@ coverage
 
 /cypress/videos/
 /cypress/screenshots/
-/src/plugins/cesium/*.js
+/src/plugins/cesium/
 
 # Editor directories and files
 .vscode/*
