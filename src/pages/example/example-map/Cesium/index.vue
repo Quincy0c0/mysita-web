@@ -16,6 +16,7 @@
       <span v-if="!selectedExample">选择一个示例以展示</span>
       <Basic v-if="selectedExample === 'basic'"></Basic>
       <div
+        v-if="selectedExample === 'basic'"
         class="example-code-link"
         @click="openLink">
         <i class="iconfont icon-code"></i>
@@ -38,6 +39,11 @@
       img: '/src/assets/img/example/cesium/cesium-base.png',
       key: 'basic',
       src: 'https://github.com/Quincy0c0/mysita-web/blob/main/src/pages/example/example-map/cesium/Basic.vue',
+    },
+    {
+      name: '轨迹漫游',
+      img: '/src/assets/img/example/cesium/cesium-trail.png',
+      key: 'trail',
     },
   ]);
 
