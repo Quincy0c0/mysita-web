@@ -5,18 +5,19 @@
         class="example-item"
         v-for="item in exampleList"
         :key="item.key"
-        @click="selectedExample = item.key"
-        :class="item.key === selectedExample ? 'selected' : ''">
+        @click="selectedExample = item"
+        :class="item.key === selectedExample.key ? 'selected' : ''">
         <img :src="item.img" />
         <span>{{ item.name }}</span>
       </div>
       <p class="example-desc">更多案例正在开发中···</p>
     </div>
     <div class="show-window">
-      <span v-if="!selectedExample">选择一个示例以展示</span>
-      <BasicMap v-if="selectedExample === 'basic_map'" />
-      <MappingTools v-if="selectedExample === 'draw_measure'"></MappingTools>
-      <PopupChart v-if="selectedExample === 'popup_chart'"></PopupChart>
+      <span v-if="!selectedExample.key">选择一个示例以展示</span>
+      <BasicMap v-if="selectedExample.key === 'basic_map'" />
+      <MappingTools
+        v-if="selectedExample.key === 'draw_measure'"></MappingTools>
+      <PopupChart v-if="selectedExample.key === 'popup_chart'"></PopupChart>
       <div
         class="example-code-link"
         @click="openLink">
@@ -32,34 +33,18 @@
   import MappingTools from './MappingTools.vue';
   import PopupChart from './MapChartPopup/index.vue';
 
+  import { useExampleStore } from '@/stores/example';
+  import { storeToRefs } from 'pinia';
+
   import { ref } from 'vue';
 
-  const selectedExample = ref('');
+  const { selectedExample, allExampleList } = storeToRefs(useExampleStore());
 
-  const exampleList = ref([
-    {
-      name: '基础地图加载/切换',
-      img: '/src/assets/img/example/openlayers/map-toggle.png',
-      key: 'basic_map',
-      src: 'https://github.com/Quincy0c0/mysita-web/blob/main/src/pages/example/example-map/OpenLayers/BasicMap.vue',
-    },
-    {
-      name: '绘制和测量',
-      img: '/src/assets/img/example/openlayers/draw-measure.png',
-      key: 'draw_measure',
-      src: 'https://github.com/Quincy0c0/mysita-web/blob/main/src/pages/example/example-map/OpenLayers/MappingTools.vue',
-    },
-    {
-      name: '弹窗和图表',
-      img: '/src/assets/img/example/openlayers/popup-chart.png',
-      key: 'popup_chart',
-      src: 'https://github.com/Quincy0c0/mysita-web/blob/main/src/pages/example/example-map/OpenLayers/MapChartPopup/index.vue',
-    },
-  ]);
+  const exampleList = ref(allExampleList.value.map.openlayers);
 
   const openLink = () => {
     exampleList.value.map((item) => {
-      if (item.key === selectedExample.value) {
+      if (item.key === selectedExample.value.key) {
         if (item.src) {
           window.open(item.src, '_blank');
         }

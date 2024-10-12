@@ -5,8 +5,8 @@
         class="example-item"
         v-for="item in exampleList"
         :key="item.key"
-        @click="selectedExample = item.key"
-        :class="item.key === selectedExample ? 'selected' : ''">
+        @click="selectedExample = item"
+        :class="item.key === selectedExample.key ? 'selected' : ''">
         <img :src="item.img" />
         <span>{{ item.name }}</span>
       </div>
@@ -14,10 +14,10 @@
     </div>
     <div class="show-window">
       <span v-if="!selectedExample">选择一个示例以展示</span>
-      <HighLightMesh v-if="selectedExample === 'HighLightMesh'" />
-      <Htmls v-if="selectedExample === 'Htmls'" />
-      <HtmlsWeb v-if="selectedExample === 'HtmlsWeb'" />
-      <MeshTransformer v-if="selectedExample === 'MeshTransformer'" />
+      <HighLightMesh v-if="selectedExample.key === 'HighLightMesh'" />
+      <Htmls v-if="selectedExample.key === 'Htmls'" />
+      <HtmlsWeb v-if="selectedExample.key === 'HtmlsWeb'" />
+      <MeshTransformer v-if="selectedExample.key === 'MeshTransformer'" />
       <div
         class="example-code-link"
         @click="openLink">
@@ -34,44 +34,18 @@
   import HtmlsWeb from './HtmlsWeb.vue';
   import MeshTransformer from './MeshTransformer.vue';
 
-  import { ref } from 'vue';
   import { useExampleStore } from '@/stores/example';
   import { storeToRefs } from 'pinia';
 
-  const selectedExample = ref('');
+  import { ref } from 'vue';
 
-  const exampleList = ref([
-    {
-      key: 'HighLightMesh',
-      name: '鼠标交互高亮',
-      img: '/src/assets/img/example/three/interaction/highLightMesh.png',
-      src: 'https://github.com/Quincy0c0/mysita-web/blob/main/src/pages/example/example-three/obj-control/HighLightMesh.vue',
-    },
-    {
-      key: 'Htmls',
-      name: '内嵌HTML',
-      img: '/src/assets/img/example/three/interaction/htmls.png',
-      src: 'https://github.com/Quincy0c0/mysita-web/blob/main/src/pages/example/example-three/obj-control/Htmls.vue',
-    },
-    {
-      key: 'HtmlsWeb',
-      name: '内嵌网站',
-      img: '/src/assets/img/example/three/interaction/htmls-web.png',
-      src: 'https://github.com/Quincy0c0/mysita-web/blob/main/src/pages/example/example-three/obj-control/HtmlWeb.vue',
-    },
-    {
-      key: 'MeshTransformer',
-      name: '控制器',
-      img: '/src/assets/img/example/three/interaction/mesh-transformer.png',
-      src: 'https://github.com/Quincy0c0/mysita-web/blob/main/src/pages/example/example-three/obj-control/MeshTransformer.vue',
-    },
-  ]);
+  const { selectedExample, allExampleList } = storeToRefs(useExampleStore());
 
-  const { exampleMenuList } = storeToRefs(useExampleStore());
+  const exampleList = ref(allExampleList.value.three['obj-control']);
 
   const openLink = () => {
     exampleList.value.map((item) => {
-      if (item.key === selectedExample.value) {
+      if (item.key === selectedExample.value.key) {
         if (item.src) {
           window.open(item.src, '_blank');
         }

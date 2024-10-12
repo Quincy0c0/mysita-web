@@ -1,6 +1,6 @@
 {
   "name": "mysita-web",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@cesium-china/cesium-map": "^1.0.0",
     "@element-plus/icons-vue": "^2.3.1",
     "@mapbox/mapbox-gl-directions": "^4.3.1",
     "@tresjs/cientos": "^4.0.2",
@@ -19,7 +20,11 @@
     "cesium": "1.99",
     "echarts": "^5.5.1",
     "element-plus": "^2.8.4",
+    "highlight.js": "^11.10.0",
+    "lodash": "^4.17.21",
     "mapbox-gl": "^3.7.0",
+    "markdown-it": "^14.1.0",
+    "markdown-it-toc": "^1.1.0",
     "ol": "^10.2.1",
     "pinia": "^2.1.7",
     "three": "^0.169.0",

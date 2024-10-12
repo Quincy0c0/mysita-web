@@ -5,19 +5,21 @@
         class="example-item"
         v-for="item in exampleList"
         :key="item.key"
-        @click="selectedExample = item.key"
-        :class="item.key === selectedExample ? 'selected' : ''">
+        @click="selectedExample = item"
+        :class="item.key === selectedExample.key ? 'selected' : ''">
         <img :src="item.img" />
         <span>{{ item.name }}</span>
       </div>
       <p class="example-desc">更多案例正在开发中···</p>
     </div>
     <div class="show-window">
-      <span v-if="!selectedExample">选择一个示例以展示</span>
-      <ProviceHover v-if="selectedExample === 'province_hover'"></ProviceHover>
-      <BuildingLoad v-if="selectedExample === 'building_load'"> </BuildingLoad>
-      <RoderGuider v-if="selectedExample === 'path_nav'"></RoderGuider>
-      <DrawLine v-if="selectedExample === 'line_nav'"></DrawLine>
+      <span v-if="!selectedExample.key">选择一个示例以展示</span>
+      <ProviceHover
+        v-if="selectedExample.key === 'province_hover'"></ProviceHover>
+      <BuildingLoad v-if="selectedExample.key === 'building_load'">
+      </BuildingLoad>
+      <RoderGuider v-if="selectedExample.key === 'path_nav'"></RoderGuider>
+      <DrawLine v-if="selectedExample.key === 'line_nav'"></DrawLine>
       <div
         class="example-code-link"
         @click="openLink">
@@ -33,40 +35,18 @@
   import BuildingLoad from './BuildingLoad.vue';
   import RoderGuider from './RoderGuider.vue';
   import DrawLine from './DrawLine.vue';
+  import { useExampleStore } from '@/stores/example';
+  import { storeToRefs } from 'pinia';
+
   import { ref } from 'vue';
 
-  const selectedExample = ref('');
+  const { selectedExample, allExampleList } = storeToRefs(useExampleStore());
 
-  const exampleList = ref([
-    {
-      name: '省市信息悬浮弹窗',
-      img: '/src/assets/img/example/mapbox/province-hover-img.png',
-      key: 'province_hover',
-      src: 'https://github.com/Quincy0c0/mysita-web/blob/main/src/pages/example/example-map/Mapbox/ProviceHover.vue',
-    },
-    {
-      name: '建筑白膜加载',
-      img: '/src/assets/img/example/mapbox/building-load-img.png',
-      key: 'building_load',
-      src: 'https://github.com/Quincy0c0/mysita-web/blob/main/src/pages/example/example-map/Mapbox/BuildingLoad.vue',
-    },
-    {
-      name: '路径导航',
-      img: '/src/assets/img/example/mapbox/path-nav-img.png',
-      key: 'path_nav',
-      src: 'https://github.com/Quincy0c0/mysita-web/blob/main/src/pages/example/example-map/Mapbox/RoderGuider.vue',
-    },
-    {
-      name: '线段绘制和漫游',
-      img: '/src/assets/img/example/mapbox/line-nav-img.png',
-      key: 'line_nav',
-      src: 'https://github.com/Quincy0c0/mysita-web/blob/main/src/pages/example/example-map/Mapbox/DrawLine.vue',
-    },
-  ]);
+  const exampleList = ref(allExampleList.value.map.mapbox);
 
   const openLink = () => {
     exampleList.value.map((item) => {
-      if (item.key === selectedExample.value) {
+      if (item.key === selectedExample.value.key) {
         if (item.src) {
           window.open(item.src, '_blank');
         }

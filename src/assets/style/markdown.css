@@ -1,0 +1,77 @@
+/* Markdown 样式 */
+.markdown-viewer {
+  font-family: 'PingFang SC', sans-serif;
+  color: #5c3b4b;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  line-height: 1.8; /* 增加行间距 */
+  border-radius: 10px;
+}
+
+/* 标题样式 */
+.markdown-viewer h1 {
+  font-size: 2rem; /* 标题1的字体大小 */
+  color: #85456f;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.markdown-viewer h2 {
+  font-size: 1.75rem; /* 标题2的字体大小 */
+  color: #85456f;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.markdown-viewer h3 {
+  font-size: 1.5rem; /* 标题3的字体大小 */
+  color: #85456f;
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+/* 段落样式 */
+.markdown-viewer p {
+  margin: 15px 0;
+  font-size: 1rem; /* 段落文本的字体大小 */
+}
+
+/* 列表样式 */
+.markdown-viewer ul {
+  padding-left: 20px;
+  margin: 10px 0;
+  list-style: disc;
+}
+
+.markdown-viewer li {
+  margin-bottom: 10px;
+}
+
+/* 链接样式 */
+.markdown-viewer a {
+  color: #f5819c;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.markdown-viewer a:hover {
+  color: #007acc;
+}
+
+/* 代码块样式 */
+.markdown-viewer pre {
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  padding: 10px;
+  overflow-x: auto;
+  margin: 15px 0;
+}
+
+.markdown-viewer code {
+  background-color: #fcb9c8;
+  border-radius: 5px;
+  padding: 2px 5px;
+  font-family: 'PingFang SC', sans-serif;
+  margin: 0 5px;
+}

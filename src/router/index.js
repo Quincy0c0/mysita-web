@@ -39,8 +39,8 @@ const router = createRouter({
             import('../pages/example/example-three/material/index.vue'),
         },
         {
-          path: 'three-interaction',
-          name: 'three-interaction',
+          path: 'obj-control',
+          name: 'obj-control',
           component: () =>
             import('../pages/example/example-three/obj-control/index.vue'),
         },
@@ -52,6 +52,11 @@ const router = createRouter({
             import('../pages/example/example-three/sprite-effect/index.vue'),
         },
       ],
+    },
+    {
+      path: '/about',
+      name: 'about',
+      component: () => import('../pages/about/index.vue'),
     },
   ],
 });

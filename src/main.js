@@ -10,6 +10,7 @@ import * as ElementPlusIconsVue from '@element-plus/icons-vue';
 import mapboxgl from 'mapbox-gl';
 
 const app = createApp(App);
+
 mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_KEY;
 
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {

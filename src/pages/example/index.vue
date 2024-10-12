@@ -40,6 +40,12 @@
 <script setup>
   import { ref, onMounted } from 'vue';
   import { useRouter } from 'vue-router';
+  import { useExampleStore } from '/src/stores/example.js';
+  import { storeToRefs } from 'pinia';
+
+  const { selectedExample, allExampleList } = storeToRefs(useExampleStore());
+  const { findKeyOrNameWithParentInfo } = useExampleStore();
+
   const router = useRouter();
   const activeItem = ref();
 
@@ -50,54 +56,54 @@
 
   const leftGuiderList = ref([
     {
-      key: 'example_1',
+      key: 'map',
       name: '地图',
       index: '1',
       children: [
         {
           index: '1-1',
           name: 'OpenLayers',
-          key: 'example_1_1',
+          key: 'openlayers',
           path: '/example/openlayers',
           src: '/src/assets/icons/openlayers.svg',
         },
         {
           index: '1-2',
           name: 'Mapbox',
-          key: 'example_1_2',
+          key: 'mapbox',
           path: '/example/mapbox',
           src: '/src/assets/icons/mapbox.svg',
         },
         {
           index: '1-3',
           name: 'Cesium',
-          key: 'example_1_3',
+          key: 'cesium',
           path: '/example/cesium',
           src: '/src/assets/icons/cesium.svg',
         },
       ],
     },
     {
-      key: 'example_2',
+      key: 'three',
       index: '2',
       name: 'Three.js',
       children: [
         {
           index: '2-1',
           name: '材质',
-          key: 'example_2_1',
+          key: 'three-material',
           path: '/example/three-material',
         },
         {
           index: '2-2',
           name: '物体交互',
-          key: 'example_2_2',
-          path: '/example/three-interaction',
+          key: 'obj-control',
+          path: '/example/obj-control',
         },
         {
           index: '2-3',
           name: '粒子效果',
-          key: 'example_2_3',
+          key: 'sprite-effect',
           path: '/example/sprite-effect',
         },
       ],
@@ -105,7 +111,16 @@
   ]);
 
   onMounted(() => {
-    let path = window.location.pathname;
+    const targetKey = selectedExample.value.key;
+    const foundItemsByKey = findKeyOrNameWithParentInfo(
+      allExampleList.value,
+      targetKey,
+      'key'
+    );
+
+    if (foundItemsByKey.length > 0) {
+      router.push(`/example/${foundItemsByKey[0].child}`);
+    }
   });
 </script>
 <style scoped>
@@ -116,7 +131,21 @@
 
   .left-guider {
     width: 15%;
+    animation: guider 0.5s ease-in-out forwards;
   }
+
+  @keyframes guider {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 0.5;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
   main {
     width: 85%;
     height: auto;
