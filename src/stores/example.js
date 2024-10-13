@@ -4,7 +4,7 @@ import { defineStore } from 'pinia';
 export const useExampleStore = defineStore('example', () => {
   const selectedExample = ref({
     name: '基础地图加载/切换',
-    img: '/src/assets/img/example/openlayers/map-toggle.png',
+    img: '/img/example/openlayers/map-toggle.png',
     key: 'basic_map',
     src: 'https://github.com/Quincy0c0/mysita-web/blob/main/src/pages/example/example-map/OpenLayers/BasicMap.vue',
   });
@@ -13,19 +13,19 @@ export const useExampleStore = defineStore('example', () => {
       openlayers: [
         {
           name: '基础地图加载/切换',
-          img: '/src/assets/img/example/openlayers/map-toggle.png',
+          img: '/img/example/openlayers/map-toggle.png',
           key: 'basic_map',
           src: 'https://github.com/Quincy0c0/mysita-web/blob/main/src/pages/example/example-map/OpenLayers/BasicMap.vue',
         },
         {
           name: '绘制和测量',
-          img: '/src/assets/img/example/openlayers/draw-measure.png',
+          img: '/img/example/openlayers/draw-measure.png',
           key: 'draw_measure',
           src: 'https://github.com/Quincy0c0/mysita-web/blob/main/src/pages/example/example-map/OpenLayers/MappingTools.vue',
         },
         {
           name: '弹窗和图表',
-          img: '/src/assets/img/example/openlayers/popup-chart.png',
+          img: '/img/example/openlayers/popup-chart.png',
           key: 'popup_chart',
           src: 'https://github.com/Quincy0c0/mysita-web/blob/main/src/pages/example/example-map/OpenLayers/MapChartPopup/index.vue',
         },
@@ -33,25 +33,25 @@ export const useExampleStore = defineStore('example', () => {
       mapbox: [
         {
           name: '省市信息悬浮弹窗',
-          img: '/src/assets/img/example/mapbox/province-hover-img.png',
+          img: '/img/example/mapbox/province-hover-img.png',
           key: 'province_hover',
           src: 'https://github.com/Quincy0c0/mysita-web/blob/main/src/pages/example/example-map/Mapbox/ProviceHover.vue',
         },
         {
           name: '建筑白膜加载',
-          img: '/src/assets/img/example/mapbox/building-load-img.png',
+          img: '/img/example/mapbox/building-load-img.png',
           key: 'building_load',
           src: 'https://github.com/Quincy0c0/mysita-web/blob/main/src/pages/example/example-map/Mapbox/BuildingLoad.vue',
         },
         {
           name: '路径导航',
-          img: '/src/assets/img/example/mapbox/path-nav-img.png',
+          img: '/img/example/mapbox/path-nav-img.png',
           key: 'path_nav',
           src: 'https://github.com/Quincy0c0/mysita-web/blob/main/src/pages/example/example-map/Mapbox/RoderGuider.vue',
         },
         {
           name: '线段绘制和漫游',
-          img: '/src/assets/img/example/mapbox/line-nav-img.png',
+          img: '/img/example/mapbox/line-nav-img.png',
           key: 'line_nav',
           src: 'https://github.com/Quincy0c0/mysita-web/blob/main/src/pages/example/example-map/Mapbox/DrawLine.vue',
         },
@@ -59,18 +59,18 @@ export const useExampleStore = defineStore('example', () => {
       cesium: [
         {
           name: '基础地图加载',
-          img: '/src/assets/img/example/cesium/cesium-base.png',
+          img: '/img/example/cesium/cesium-base.png',
           key: 'basic',
           src: 'https://github.com/Quincy0c0/mysita-web/blob/main/src/pages/example/example-map/cesium/Basic.vue',
         },
         {
           name: '轨迹漫游',
-          img: '/src/assets/img/example/cesium/cesium-trail.png',
+          img: '/img/example/cesium/cesium-trail.png',
           key: 'trail',
         },
         {
           name: '模型压平',
-          img: '/src/assets/img/example/cesium/model-transform.png',
+          img: '/img/example/cesium/model-transform.png',
           key: 'ModelTransfrom',
         },
       ],
@@ -80,25 +80,25 @@ export const useExampleStore = defineStore('example', () => {
         {
           key: 'GlassMaterial',
           name: '玻璃材质',
-          img: '/src/assets/img/example/three/mesh/glassMaterial.png',
+          img: '/img/example/three/mesh/glassMaterial.png',
           src: 'https://github.com/Quincy0c0/mysita-web/blob/main/src/pages/example/example-three/material/glassMaterial.vue',
         },
         {
           key: 'Reflector',
           name: '镜面反射',
-          img: '/src/assets/img/example/three/mesh/reflector.png',
+          img: '/img/example/three/mesh/reflector.png',
           src: 'https://github.com/Quincy0c0/mysita-web/blob/main/src/pages/example/example-three/material/Reflector.vue',
         },
         {
           key: 'CustomMateral',
           name: '自定义材质',
-          img: '/src/assets/img/example/three/mesh/customMaterial.png',
+          img: '/img/example/three/mesh/customMaterial.png',
           src: 'https://github.com/Quincy0c0/mysita-web/blob/main/src/pages/example/example-three/material/CustomMaterial.vue',
         },
         {
           key: 'Globe',
           name: '地球',
-          img: '/src/assets/img/example/three/mesh/globe.png',
+          img: '/img/example/three/mesh/globe.png',
           src: 'https://github.com/Quincy0c0/mysita-web/blob/main/src/pages/example/example-three/material/Globe.vue',
         },
       ],
@@ -106,25 +106,25 @@ export const useExampleStore = defineStore('example', () => {
         {
           key: 'HighLightMesh',
           name: '鼠标交互高亮',
-          img: '/src/assets/img/example/three/interaction/highLightMesh.png',
+          img: '/img/example/three/interaction/highLightMesh.png',
           src: 'https://github.com/Quincy0c0/mysita-web/blob/main/src/pages/example/example-three/obj-control/HighLightMesh.vue',
         },
         {
           key: 'Htmls',
           name: '内嵌HTML',
-          img: '/src/assets/img/example/three/interaction/htmls.png',
+          img: '/img/example/three/interaction/htmls.png',
           src: 'https://github.com/Quincy0c0/mysita-web/blob/main/src/pages/example/example-three/obj-control/Htmls.vue',
         },
         {
           key: 'HtmlsWeb',
           name: '内嵌网站',
-          img: '/src/assets/img/example/three/interaction/htmls-web.png',
+          img: '/img/example/three/interaction/htmls-web.png',
           src: 'https://github.com/Quincy0c0/mysita-web/blob/main/src/pages/example/example-three/obj-control/HtmlWeb.vue',
         },
         {
           key: 'MeshTransformer',
           name: '控制器',
-          img: '/src/assets/img/example/three/interaction/mesh-transformer.png',
+          img: '/img/example/three/interaction/mesh-transformer.png',
           src: 'https://github.com/Quincy0c0/mysita-web/blob/main/src/pages/example/example-three/obj-control/MeshTransformer.vue',
         },
       ],
@@ -132,13 +132,13 @@ export const useExampleStore = defineStore('example', () => {
         {
           key: 'PointFlow',
           name: '点',
-          img: '/src/assets/img/example/three/sprite-effect/point-flow.png',
+          img: '/img/example/three/sprite-effect/point-flow.png',
           src: 'https://github.com/Quincy0c0/mysita-web/blob/main/src/pages/example/example-three/sprite-effect/PointFlow.vue',
         },
         {
           key: 'Snow',
           name: '雪花',
-          img: '/src/assets/img/example/three/sprite-effect/snow.png',
+          img: '/img/example/three/sprite-effect/snow.png',
           src: 'https://github.com/Quincy0c0/mysita-web/blob/main/src/pages/example/example-three/sprite-effect/Snow.vue',
         },
       ],

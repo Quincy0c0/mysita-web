@@ -62,7 +62,7 @@
       <div class="contact">
         <div style="width: 300px">联系邮箱：wuxiao_18095178410@163.com</div>
         <div class="wexin">
-          <img src="/src/assets/img/others/image.png" />
+          <img src="/public/img/others/image.png" />
           <p>个人微信</p>
         </div>
       </div>

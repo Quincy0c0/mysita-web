@@ -13,7 +13,7 @@
   const htmlContent = ref(null);
 
   onMounted(async () => {
-    const response = await fetch('/src/assets/markdown/Introduce.md'); // 替换为你的 Markdown 文件路径
+    const response = await fetch('/markdown/Introduce.md'); // 替换为你的 Markdown 文件路径
     const text = await response.text();
 
     htmlContent.value = md.render(text);

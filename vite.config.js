@@ -38,5 +38,6 @@ export default defineConfig({
   },
   build: {
     assetsInlineLimit: 0, // 禁用内联，将所有资源都打包到 dist 中
+    chunkSizeWarningLimit: 1024000, // 将警告阈值设置为 1000kB
   },
 });

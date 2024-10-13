@@ -5,7 +5,7 @@
       <div class="hero-content">
         <img
           class="profile-image slide-in-left"
-          src="/public/ic.jpg"
+          src="/ic.jpg"
           alt="Profile Image" />
         <div class="hero-text">
           <h1 class="hero-title fade-in">Mystia</h1>
@@ -118,33 +118,33 @@
   const skills = ref([
     {
       name: 'Vue',
-      iconSrc: '/src/assets/icons/Vue.png',
+      iconSrc: '/icons/Vue.png',
       link: 'https://cn.vuejs.org/',
     },
 
     {
       name: 'Turf',
-      iconSrc: '/src/assets/icons/turf.svg',
+      iconSrc: '/icons/turf.svg',
       link: 'https://turfjs.org/',
     },
     {
       name: 'OpenLayers',
-      iconSrc: '/src/assets/icons/openlayers_blue.svg',
+      iconSrc: '/icons/openlayers_blue.svg',
       link: 'https://openlayers.org/',
     },
     {
       name: 'Cesium',
-      iconSrc: '/src/assets/icons/Cesium.png',
+      iconSrc: '/icons/Cesium.png',
       link: 'https://cesium.com/',
     },
     {
       name: 'Three',
-      iconSrc: '/src/assets/icons/Three.png',
+      iconSrc: '/icons/Three.png',
       link: 'https://threejs.org/',
     },
     {
       name: 'Tres',
-      iconSrc: '/src/assets/icons/Tres.svg',
+      iconSrc: '/icons/Tres.svg',
       link: 'https://tresjs.org/',
     },
   ]);
