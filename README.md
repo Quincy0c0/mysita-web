@@ -1,29 +1,59 @@
-# mysita-web
+## 介绍
 
-This template should help get you started developing with Vue 3 in Vite.
+一个附有地图案例的个人网站，供学习 WebGIS 使用
 
-## Recommended IDE Setup
+网站主要使用的内容有：
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+框架：
 
-## Customize configuration
+- [Vue3](https://v3.cn.vuejs.org/)
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+地图部分：
 
-## Project Setup
+- [openlayers](https://openlayers.org/)
 
-```sh
+- [mapbox](https://www.mapbox.com/)
+
+- [cesium](https://cesium.com/)
+
+三维部分：
+
+- [ThreeJS](https://threejs.org/)
+
+- [TresJS](https://tresjs.org)
+
+文档部分：
+
+- [markdown-it](https://github.com/markdown-it/markdown-it)
+
+## 启动步骤
+
+### 1. 安装
+
+```js
 pnpm install
 ```
 
-### Compile and Hot-Reload for Development
+### 2. 启动前准备
 
-```sh
+创建`.env.development`文件配置
+
+```js
+VITE_MAPBOX_KEY = '你的mapbox key';
+
+VITE_TIANDITU_KEY = '你的天地图 key';
+
+VITE_CESIUM_KEY = '你的cesium key';
+
+VITE_SERVER_SRC = '后端服务器地址'; //没有这个会影响部分Cesium加载本地模型的案例
+```
+
+### 3. 启动
+
+```js
 pnpm dev
 ```
 
-### Compile and Minify for Production
+## 版权
 
-```sh
-pnpm build
-```
+本项目遵循 MIT 开源协议，支持免费使用，二次开发请标注出处和作者。
