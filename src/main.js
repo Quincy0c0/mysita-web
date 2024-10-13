@@ -8,10 +8,12 @@ import './assets/style/basic.css';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import * as ElementPlusIconsVue from '@element-plus/icons-vue';
 import mapboxgl from 'mapbox-gl';
+import { Ion } from 'cesium';
 
 const app = createApp(App);
 
 mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_KEY;
+Ion.defaultAccessToken = import.meta.env.VITE_CESIUM_KEY;
 
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
   app.component(key, component);

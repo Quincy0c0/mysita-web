@@ -37,8 +37,6 @@
   };
 
   onMounted(() => {
-    Cesium.Ion.defaultAccessToken = import.meta.env.VITE_CESIUM_KEY;
-
     Cesium.buildModuleUrl.setBaseUrl('/node_modules/cesium/Build/Cesium/');
 
     viewer.value = new Cesium.Viewer('cesiumContainer', {

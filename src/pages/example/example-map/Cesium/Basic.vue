@@ -10,8 +10,6 @@
   import 'cesium/Build/Cesium/Widgets/widgets.css';
 
   onMounted(() => {
-    Cesium.Ion.defaultAccessToken = import.meta.env.VITE_CESIUM_KEY;
-
     // 设置基础URL
     Cesium.buildModuleUrl.setBaseUrl('/node_modules/cesium/Build/Cesium/');
 
