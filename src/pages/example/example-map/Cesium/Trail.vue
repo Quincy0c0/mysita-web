@@ -37,8 +37,6 @@
   };
 
   onMounted(() => {
-    Cesium.buildModuleUrl.setBaseUrl('/node_modules/cesium/Build/Cesium/');
-
     viewer.value = new Cesium.Viewer('cesiumContainer', {
       timeline: false,
       // 动画控件
