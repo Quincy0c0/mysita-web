@@ -93,7 +93,7 @@
     const modelMatrix = Cesium.Transforms.eastNorthUpToFixedFrame(cartesian);
     const tileset = viewer.value.scene.primitives.add(
       new Cesium.Cesium3DTileset({
-        url: import.meta.env.VITE_SERVER_SRC + 'AGI_HQ/tileset.json',
+        url: '/public/models/AGI_HQ/tileset.json',
         modelMatrix,
       })
     );

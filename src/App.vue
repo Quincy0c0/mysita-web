@@ -109,7 +109,6 @@
   watch(
     selectedMenu,
     (val) => {
-      console.log(val);
       if (val === 'example') {
         searchShow.value = true;
       } else {

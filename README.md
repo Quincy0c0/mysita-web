@@ -38,14 +38,18 @@ pnpm install
 
 创建`.env.development`文件配置
 
+key 获取需要到对应的官网注册账号获取
+
+- [mapbox](https://account.mapbox.com/)
+- [天地图](https://lbs.tianditu.gov.cn/)
+- [cesium](https://cesium.com/downloads/)
+
 ```js
 VITE_MAPBOX_KEY = '你的mapbox key';
 
 VITE_TIANDITU_KEY = '你的天地图 key';
 
 VITE_CESIUM_KEY = '你的cesium key';
-
-VITE_SERVER_SRC = '后端服务器地址'; //没有这个会影响部分Cesium加载本地模型的案例
 ```
 
 ### 3. 启动
