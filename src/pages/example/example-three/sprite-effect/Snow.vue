@@ -56,10 +56,10 @@
 
   // 预加载雪花纹理
   const textures = [
-    new THREE.TextureLoader().load('/src/assets/texture/snowflake1_t.png'),
-    new THREE.TextureLoader().load('/src/assets/texture/snowflake2_t.png'),
-    new THREE.TextureLoader().load('/src/assets/texture/snowflake3_t.png'),
-    new THREE.TextureLoader().load('/src/assets/texture/snowflake4_t.png'),
+    new THREE.TextureLoader().load('/texture/snowflake1_t.png'),
+    new THREE.TextureLoader().load('/texture/snowflake2_t.png'),
+    new THREE.TextureLoader().load('/texture/snowflake3_t.png'),
+    new THREE.TextureLoader().load('/texture/snowflake4_t.png'),
   ];
   for (let i = 0, l = snowNumbers; i < l; i++) {
     const x = Math.random() * 20 - 10; // 随机生成x坐标
