@@ -64,7 +64,7 @@
 
   onMounted(async () => {
     texture.value = await useTexture({
-      map: '/assets/texture/world.jpeg',
+      map: '/texture/world.jpeg',
       normalMap: '/texture/world_normal.jpg',
     });
   });
