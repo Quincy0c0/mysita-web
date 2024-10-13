@@ -5,15 +5,20 @@
 </template>
 
 <script setup>
-  import { onMounted } from 'vue';
+  import { onMounted, onBeforeUnmount, ref } from 'vue';
   import * as Cesium from 'cesium';
   import 'cesium/Build/Cesium/Widgets/widgets.css';
 
+  const viewer = ref(null);
+
   onMounted(() => {
     // 设置基础URL
-    Cesium.buildModuleUrl.setBaseUrl('/node_modules/cesium/Build/Cesium/');
+    viewer.value = new Cesium.Viewer('cesiumContainer');
+  });
 
-    const viewer = new Cesium.Viewer('cesiumContainer');
+  onBeforeUnmount(() => {
+    viewer.value && viewer.value.destroy();
+    viewer.value = null;
   });
 </script>
 

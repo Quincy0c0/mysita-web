@@ -9,7 +9,7 @@
 </template>
 
 <script setup>
-  import { onMounted, ref } from 'vue';
+  import { onMounted, ref, onBeforeUnmount } from 'vue';
   import * as Cesium from 'cesium';
   import 'cesium/Build/Cesium/Widgets/widgets.css';
   import DrawTool from '/src/plugins/cesium/DrawTool-complete';
@@ -98,6 +98,11 @@
     });
 
     drawTool.value = new DrawTool(viewer.value, {});
+  });
+
+  onBeforeUnmount(() => {
+    viewer.value && viewer.value.destroy();
+    viewer.value = null;
   });
 </script>
 

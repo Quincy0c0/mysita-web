@@ -13,7 +13,7 @@
 </template>
 
 <script setup>
-  import { onMounted, ref } from 'vue';
+  import { onMounted, ref, onBeforeUnmount } from 'vue';
   import * as Cesium from 'cesium';
   import 'cesium/Build/Cesium/Widgets/widgets.css';
 
@@ -67,9 +67,6 @@
 
   onMounted(() => {
     initPane();
-    Cesium.Ion.defaultAccessToken = import.meta.env.VITE_CESIUM_KEY;
-
-    Cesium.buildModuleUrl.setBaseUrl('/node_modules/cesium/Build/Cesium/');
 
     viewer.value = new Cesium.Viewer('cesiumContainer', {
       timeline: false,
@@ -123,7 +120,7 @@
     const modelMatrix = Cesium.Transforms.eastNorthUpToFixedFrame(cartesian);
     tileset.value = viewer.value.scene.primitives.add(
       new Cesium.Cesium3DTileset({
-        url: '/public/models/AGI_HQ/tileset.json',
+        url: '/models/AGI_HQ/tileset.json',
         modelMatrix,
       })
     );
@@ -132,6 +129,11 @@
     });
 
     drawTool.value = new DrawTool(viewer.value, {});
+  });
+
+  onBeforeUnmount(() => {
+    viewer.value && viewer.value.destroy();
+    viewer.value = null;
   });
 </script>
 
