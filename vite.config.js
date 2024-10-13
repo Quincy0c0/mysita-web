@@ -36,4 +36,7 @@ export default defineConfig({
       },
     },
   },
+  build: {
+    assetsInlineLimit: 0, // 禁用内联，将所有资源都打包到 dist 中
+  },
 });
