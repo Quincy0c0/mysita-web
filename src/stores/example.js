@@ -73,6 +73,16 @@ export const useExampleStore = defineStore('example', () => {
           img: '/img/example/cesium/model-transform.png',
           key: 'ModelTransfrom',
         },
+        {
+          name: '天空盒',
+          img: '/img/example/cesium/skybox.png',
+          key: 'skybox',
+        },
+        {
+          name: '白膜加载',
+          img: '/img/example/cesium/buildings.png',
+          key: 'buildings',
+        },
       ],
     },
     three: {

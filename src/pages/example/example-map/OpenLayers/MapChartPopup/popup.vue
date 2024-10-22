@@ -30,6 +30,7 @@
         nextTick(() => {
           initChart();
         });
+        // initChart();
       } else {
         chartInstance.value.dispose();
       }

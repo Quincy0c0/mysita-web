@@ -5,6 +5,7 @@
 <script setup>
   import mapboxgl from 'mapbox-gl/dist/mapbox-gl';
   import { onMounted, onBeforeUnmount, ref } from 'vue';
+  import { getProvinceGeo } from '/src/request/index.js';
 
   const map = ref(null);
 
@@ -50,20 +51,14 @@
       projection: 'globe', //地图模式 球体
     });
 
+    const data = await getProvinceGeo();
+
     map.value.on('load', function () {
       map.value.setFog({}); //设置星空
 
-      //添加数据源
       map.value.addSource('data', {
         type: 'geojson',
-        data: 'https://geo.datav.aliyun.com/areas_v3/bound/100000_full.json',
-      });
-      map.value.addSource('highlight', {
-        type: 'geojson',
-        data: {
-          type: 'FeatureCollection',
-          features: [],
-        },
+        data: data,
       });
 
       //添加图层
@@ -86,6 +81,15 @@
           'line-opacity': 0.8,
         },
       });
+
+      map.value.addSource('highlight', {
+        type: 'geojson',
+        data: {
+          type: 'FeatureCollection',
+          features: [],
+        },
+      });
+
       map.value.addLayer({
         id: 'highlight',
         type: 'fill',
@@ -121,7 +125,7 @@
         .setHTML(
           //设置弹窗内容，为properties里面的属性
           `<p>省份名称:<span style="color:blue">${e.features[0].properties.name}</span></P>
-        <p>adcode:<span style="color:blue">${e.features[0].properties.adcode}</span></P>`
+          <p>adcode:<span style="color:blue">${e.features[0].properties.adcode}</span></P>`
         )
         //添加到地图上
         .addTo(map.value);

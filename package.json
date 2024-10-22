@@ -17,7 +17,7 @@
     "@turf/turf": "^7.1.0",
     "@unhead/vue": "^1.11.6",
     "axios": "^1.7.7",
-    "cesium": "~1.97.0",
+    "cesium": "~1.99.0",
     "echarts": "^5.5.1",
     "element-plus": "^2.8.4",
     "highlight.js": "^11.10.0",

@@ -18,12 +18,15 @@
       <Trail v-if="selectedExample.key === 'trail'"></Trail>
       <ModelTransfrom
         v-if="selectedExample.key === 'ModelTransfrom'"></ModelTransfrom>
+      <SkyBox v-if="selectedExample.key === 'skybox'"></SkyBox>
+      <Builings v-if="selectedExample.key === 'buildings'"></Builings>
 
       <div
         v-if="selectedExample.key === 'basic'"
         class="example-code-link"
         @click="openLink">
         <i class="iconfont icon-code"></i>
+
         <span>查看源码</span>
       </div>
     </div>
@@ -34,6 +37,8 @@
   import Basic from './Basic.vue';
   import Trail from './Trail.vue';
   import ModelTransfrom from './ModelTransfrom.vue';
+  import SkyBox from './SkyBox.vue';
+  import Builings from './Buildings.vue';
   import { useExampleStore } from '@/stores/example';
   import { storeToRefs } from 'pinia';
 
