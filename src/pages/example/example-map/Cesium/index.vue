@@ -20,9 +20,8 @@
         v-if="selectedExample.key === 'ModelTransfrom'"></ModelTransfrom>
       <SkyBox v-if="selectedExample.key === 'skybox'"></SkyBox>
       <Builings v-if="selectedExample.key === 'buildings'"></Builings>
-
+      <PointFocus v-if="selectedExample.key === 'PointFocus'"></PointFocus>
       <div
-        v-if="selectedExample.key === 'basic'"
         class="example-code-link"
         @click="openLink">
         <i class="iconfont icon-code"></i>
@@ -39,6 +38,7 @@
   import ModelTransfrom from './ModelTransfrom.vue';
   import SkyBox from './SkyBox.vue';
   import Builings from './Buildings.vue';
+  import PointFocus from './PointFocus.vue';
   import { useExampleStore } from '@/stores/example';
   import { storeToRefs } from 'pinia';
 

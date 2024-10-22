@@ -16,16 +16,26 @@
 }
 .example-list {
   margin: 10px;
+  padding: 10px;
   width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
   color: rgb(133, 112, 117);
-  overflow-x: auto;
+  overflow-x: hidden;
 }
+.example-list:hover {
+  padding-bottom: 0px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: auto;
+  scrollbar-color: rgb(228, 158, 174) rgba(253, 253, 253, 0.1);
+}
+
 .example-item {
   width: 200px;
   height: 150px;
+  min-width: 200px;
   border-radius: 15px;
   display: flex;
   flex-direction: column;
@@ -101,6 +111,8 @@
 .example-desc {
   width: 200px;
   height: 150px;
+  min-width: 200px;
+
   border-radius: 15px;
   display: flex;
   flex-direction: column;

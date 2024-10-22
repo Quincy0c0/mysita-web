@@ -83,6 +83,11 @@ export const useExampleStore = defineStore('example', () => {
           img: '/img/example/cesium/buildings.png',
           key: 'buildings',
         },
+        {
+          name: '热点扩散',
+          img: '/img/example/cesium/PointFocus.png',
+          key: 'PointFocus',
+        },
       ],
     },
     three: {
