@@ -174,10 +174,13 @@
   // 状态卡片数据
   const statusCard = ref({
     title: '网站状态',
-    version: '当前版本：v0.1.0',
-    lastUpdate: '最近更新：2024.10.11',
+    version: '当前版本：v0.2.0',
+    lastUpdate: '最近更新：2024.10.22',
     updatedTitle: '更新内容',
-    updatedInfo: ['创建了站点'],
+    updatedInfo: [
+      '修复了Mapbox部分案例bug',
+      '添加了Cesium的白膜加载、天空盒、热点扩散等内容',
+    ],
   });
 
   const videoList = ref([
