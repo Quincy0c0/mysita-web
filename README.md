@@ -1,6 +1,8 @@
 ## 介绍
 
-一个附有地图案例的个人网站，供学习 WebGIS 使用
+一个附有地图案例的个人网站，个人练手+供大家免费学习 使用
+
+自有服务器部署网址：http://www.mystialorelei.top/
 
 网站主要使用的内容有：
 
@@ -15,6 +17,8 @@
 - [mapbox](https://www.mapbox.com/)
 
 - [cesium](https://cesium.com/)
+
+- [turf](https://turfjs.org/)
 
 三维部分：
 
@@ -52,7 +56,7 @@ VITE_TIANDITU_KEY = '你的天地图 key';
 VITE_CESIUM_KEY = '你的cesium key';
 ```
 
-### 3. 启动
+### 3. 启动(开发环境)
 
 ```js
 pnpm dev

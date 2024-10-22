@@ -1,8 +1,12 @@
 {
   "name": "mysita-web",
-  "version": "0.1.0",
-  "private": true,
+  "version": "0.2.0",
   "type": "module",
+  "author": "Mystia",
+  "license": "MIT license",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
