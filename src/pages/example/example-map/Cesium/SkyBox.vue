@@ -65,23 +65,23 @@
     });
     const groundSky = new Cesium.SkyBox({
       sources: {
-        positiveX: `/public/skyBox/02/px.jpg`,
-        negativeX: `/public/skyBox/02/nx.jpg`,
-        positiveY: `/public/skyBox/02/py.jpg`,
-        negativeY: `/public/skyBox/02/ny.jpg`,
-        positiveZ: `/public/skyBox/02/pz.jpg`,
-        negativeZ: `/public/skyBox/02/nz.jpg`,
+        positiveX: `/skyBox/02/px.jpg`,
+        negativeX: `/skyBox/02/nx.jpg`,
+        positiveY: `/skyBox/02/py.jpg`,
+        negativeY: `/skyBox/02/ny.jpg`,
+        positiveZ: `/skyBox/02/pz.jpg`,
+        negativeZ: `/skyBox/02/nz.jpg`,
       },
     });
 
     // const groundSky = new SkyBoxOnGround({
     //   sources: {
-    //     positiveX: `/public/skyBox/02/px.jpg`,
-    //     negativeX: `/public/skyBox/02/nx.jpg`,
-    //     positiveY: `/public/skyBox/02/py.jpg`,
-    //     negativeY: `/public/skyBox/02/ny.jpg`,
-    //     positiveZ: `/public/skyBox/02/pz.jpg`,
-    //     negativeZ: `/public/skyBox/02/nz.jpg`,
+    //     positiveX: `/skyBox/02/px.jpg`,
+    //     negativeX: `/skyBox/02/nx.jpg`,
+    //     positiveY: `/skyBox/02/py.jpg`,
+    //     negativeY: `/skyBox/02/ny.jpg`,
+    //     positiveZ: `/skyBox/02/pz.jpg`,
+    //     negativeZ: `/skyBox/02/nz.jpg`,
     //   },
     // });
     viewer.value.scene.skyBox = groundSky;

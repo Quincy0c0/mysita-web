@@ -1,15 +1,7 @@
-/*
- * @Description:
- * @Author: your name
- * @version:
- * @Date: 2024-09-05 09:42:17
- * @LastEditors: your name
- * @LastEditTime: 2024-09-05 11:07:19
- */
 // 夜景贴图顶点
 const fragmentShader = /*glsl*/ `
 void fragmentMain(FragmentInput fsInput, inout czm_modelMaterial material){
-    vec3 resCol=vec3(0.4,.1,.4);
+    vec3 resCol=vec3(0.4,.4,.4);
     // 获取模型坐标
     vec3 positionMC=fsInput.attributes.positionMC;
     // 判断当前渲染的片元在模型的中间  得到模型在x-z上的uv坐标 （0,1）
@@ -21,7 +13,6 @@ void fragmentMain(FragmentInput fsInput, inout czm_modelMaterial material){
     //     resCol*=10.;
     // }
     // 渐变
-    // resCol*=czm_h;
     // 渐变色2 实现两种颜色的渐变过渡
     vec3 col1=vec3(0.1,1.,0.);
     vec3 col2=vec3(1.,0.,0.);

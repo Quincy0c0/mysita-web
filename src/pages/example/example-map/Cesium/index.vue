@@ -21,6 +21,7 @@
       <SkyBox v-if="selectedExample.key === 'skybox'"></SkyBox>
       <Builings v-if="selectedExample.key === 'buildings'"></Builings>
       <PointFocus v-if="selectedExample.key === 'PointFocus'"></PointFocus>
+      <Snow v-if="selectedExample.key === 'snow'"> </Snow>
       <div
         class="example-code-link"
         @click="openLink">
@@ -38,6 +39,7 @@
   import ModelTransfrom from './ModelTransfrom.vue';
   import SkyBox from './SkyBox.vue';
   import Builings from './Buildings.vue';
+  import Snow from './Snow.vue';
   import PointFocus from './PointFocus.vue';
   import { useExampleStore } from '@/stores/example';
   import { storeToRefs } from 'pinia';

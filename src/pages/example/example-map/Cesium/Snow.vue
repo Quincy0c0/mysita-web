@@ -5,17 +5,16 @@
 </template>
 
 <script setup>
-  import { onMounted, onBeforeUnmount, ref } from 'vue';
+  import { onMounted, ref, onBeforeUnmount } from 'vue';
   import * as Cesium from 'cesium';
   import 'cesium/Build/Cesium/Widgets/widgets.css';
-  import vertexShader from '/src/shaders/movingRingShader/vs';
-  import fragmentShader from '/src/shaders/movingRingShader/fs';
   import { TencentImageryProvider } from '@cesium-china/cesium-map';
+  import Fs from '/src/shaders/snowfs.js';
 
   const viewer = ref(null);
+  const tileset = ref(null);
 
   onMounted(() => {
-    // 设置基础URL
     viewer.value = new Cesium.Viewer('cesiumContainer', {
       timeline: false,
       // 动画控件
@@ -55,37 +54,38 @@
       Cesium.CameraEventType.LEFT_DRAG,
     ];
 
-    const tile = new Cesium.Cesium3DTileset({
-      url: '/tileset/tileset.json',
-    });
-
-    const tileset = viewer.value.scene.primitives.add(tile);
-
-    tileset.readyPromise.then((tile) => {
-      viewer.value.zoomTo(tile);
-      viewer.value.scene.postProcessStages.fxaa.enabled = true;
-      tile.customShader = new Cesium.CustomShader({
-        uniforms: {
-          u_nightTexture: {
-            type: Cesium.UniformType.SAMPLER_2D,
-            value: new Cesium.TextureUniform({
-              url: '/texture/wall.png',
-            }),
-          },
-        },
-        varyings: {
-          v_normalMC: Cesium.VaryingType.VEC3,
-        },
-        vertexShaderText: vertexShader,
-        fragmentShaderText: fragmentShader,
-      });
-    });
     const options = {
       style: 4, //style: img、1：经典
       crs: 'WGS84', // 使用84坐标系，默认为：GCJ02,
     };
     viewer.value.scene.imageryLayers.addImageryProvider(
       new TencentImageryProvider(options)
+    );
+
+    // 使用modelMatrix构造模型的位置
+    const cartesian = new Cesium.Cartesian3.fromDegrees(114.3, 30.5);
+    const modelMatrix = Cesium.Transforms.eastNorthUpToFixedFrame(cartesian);
+    tileset.value = viewer.value.scene.primitives.add(
+      new Cesium.Cesium3DTileset({
+        url: '/models/AGI_HQ/tileset.json',
+        modelMatrix,
+      })
+    );
+    tileset.value.readyPromise.then((tile) => {
+      viewer.value.zoomTo(tile);
+    });
+
+    const stages = viewer.value.scene.postProcessStages;
+
+    stages.add(
+      new Cesium.PostProcessStage({
+        name: 'bink',
+        uniforms: {
+          snowSpeed: 2,
+          snowSize: 1,
+        },
+        fragmentShader: Fs,
+      })
     );
   });
 
@@ -104,5 +104,12 @@
   #cesiumContainer {
     width: 100%;
     height: 100%;
+  }
+
+  .btns {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 999;
   }
 </style>

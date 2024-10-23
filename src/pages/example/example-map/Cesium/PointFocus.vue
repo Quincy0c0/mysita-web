@@ -14,7 +14,7 @@
 
   const viewer = ref(null);
 
-  onMounted(() => {
+  onMounted(async () => {
     // 设置基础URL
     viewer.value = new Cesium.Viewer('cesiumContainer', {
       timeline: false,
@@ -56,8 +56,10 @@
     ];
 
     const tile = new Cesium.Cesium3DTileset({
-      url: '/public/tileset/tileset.json',
+      url: '/tileset/tileset.json',
     });
+
+    console.log(Cesium.Cesium3DTile);
 
     const tileset = viewer.value.scene.primitives.add(tile);
 

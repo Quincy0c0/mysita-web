@@ -40,7 +40,7 @@
   const snowNumbers = 1000;
   const snowSize = 0.8;
   const snowOpacity = 0.8;
-  const snowColor = '#ffffff';
+  const snowColor = '#ff25d1';
 
   // 创建一个缓冲几何体，用于存储粒子的位置
   const particles = new THREE.BufferGeometry();

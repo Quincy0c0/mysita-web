@@ -88,6 +88,11 @@ export const useExampleStore = defineStore('example', () => {
           img: '/img/example/cesium/PointFocus.png',
           key: 'PointFocus',
         },
+        {
+          name: '下雪效果',
+          img: '/img/example/cesium/snow.png',
+          key: 'snow',
+        },
       ],
     },
     three: {
@@ -166,7 +171,7 @@ export const useExampleStore = defineStore('example', () => {
   ) {
     const results = [];
 
-    function recurse(currentObj, parentClass = null, parentChild = null) {
+    function recurse(currentObj, parentClass = null) {
       if (typeof currentObj === 'object' && currentObj !== null) {
         for (let key in currentObj) {
           if (currentObj.hasOwnProperty(key)) {
@@ -194,18 +199,15 @@ export const useExampleStore = defineStore('example', () => {
   const findChildrenOfClass = function (obj, targetClass) {
     const results = [];
 
-    // Helper function for recursion
-    function recurse(currentObj, parentClass = null) {
+    function recurse(currentObj) {
       if (typeof currentObj === 'object' && currentObj !== null) {
         for (let key in currentObj) {
           if (currentObj.hasOwnProperty(key)) {
             if (key === targetClass && Array.isArray(currentObj[key])) {
-              // Push all items in the target class
               currentObj[key].forEach((item) => {
                 results.push(item);
               });
             } else if (typeof currentObj[key] === 'object') {
-              // Recursively search in nested objects
               recurse(currentObj[key], key);
             }
           }
@@ -213,7 +215,6 @@ export const useExampleStore = defineStore('example', () => {
       }
     }
 
-    // Start recursion from the root object
     recurse(obj);
 
     return results;
