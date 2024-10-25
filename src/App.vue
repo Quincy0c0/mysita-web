@@ -164,7 +164,7 @@
   };
 
   const toGitHub = () => {
-    window.open('https://github.com/Quincy0c0');
+    window.open('https://github.com/Quincy0c0/mysita-web');
   };
 
   const goGov = () => {
