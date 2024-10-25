@@ -14,7 +14,9 @@
     "start": "electron ."
   },
   "dependencies": {
+    "@antv/g6": "^5.0.26",
     "@antv/x6": "^2.18.1",
+    "@antv/x6-vue-shape": "^2.1.2",
     "@cesium-china/cesium-map": "^1.0.0",
     "@element-plus/icons-vue": "^2.3.1",
     "@mapbox/mapbox-gl-directions": "^4.3.1",

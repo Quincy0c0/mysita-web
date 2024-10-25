@@ -99,6 +99,11 @@
       path: '/example',
       key: 'example',
     },
+    // {
+    //   name: '画布',
+    //   path: '/draw',
+    //   key: 'draw',
+    // },
     {
       name: '关于',
       path: '/about',

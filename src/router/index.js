@@ -58,6 +58,11 @@ const router = createRouter({
       name: 'about',
       component: () => import('../pages/about/index.vue'),
     },
+    {
+      path: '/draw',
+      name: 'draw',
+      component: () => import('../pages/draw/index.vue'),
+    },
   ],
 });
 

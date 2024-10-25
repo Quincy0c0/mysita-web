@@ -199,8 +199,8 @@
   //操作提示
   const getMousePosition = (event) => {
     if (drawType.value !== 'none') {
-      tipsPosition.value.left = event.clientX - 250;
-      tipsPosition.value.top = event.clientY - 320;
+      tipsPosition.value.left = event.clientX - 280;
+      tipsPosition.value.top = event.clientY - 300;
     }
   };
 
