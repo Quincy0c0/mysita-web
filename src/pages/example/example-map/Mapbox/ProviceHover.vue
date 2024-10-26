@@ -5,7 +5,6 @@
 <script setup>
   import mapboxgl from 'mapbox-gl/dist/mapbox-gl';
   import { onMounted, onBeforeUnmount, ref } from 'vue';
-  import { getProvinceGeo } from '/src/request/index.js';
 
   const map = ref(null);
 
@@ -51,14 +50,12 @@
       projection: 'globe', //地图模式 球体
     });
 
-    const data = await getProvinceGeo();
-
     map.value.on('load', function () {
       map.value.setFog({}); //设置星空
 
       map.value.addSource('data', {
         type: 'geojson',
-        data: data,
+        data: '/geoJSON/province.json',
       });
 
       //添加图层

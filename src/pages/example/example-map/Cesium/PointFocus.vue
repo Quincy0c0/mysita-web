@@ -5,12 +5,17 @@
 </template>
 
 <script setup>
-  import { onMounted, onBeforeUnmount, ref } from 'vue';
   import * as Cesium from 'cesium';
   import 'cesium/Build/Cesium/Widgets/widgets.css';
   import vertexShader from '/src/shaders/pointLightShader/vs';
   import fragmentShader from '/src/shaders/pointLightShader/fs';
   import { TencentImageryProvider } from '@cesium-china/cesium-map';
+
+  import { onMounted, onBeforeUnmount, ref } from 'vue';
+  import { useCesiumStore } from '@/stores/cesium';
+  import { storeToRefs } from 'pinia';
+
+  const { buildModel } = storeToRefs(useCesiumStore());
 
   const viewer = ref(null);
 
@@ -55,13 +60,7 @@
       Cesium.CameraEventType.LEFT_DRAG,
     ];
 
-    const tile = new Cesium.Cesium3DTileset({
-      url: '/tileset/tileset.json',
-    });
-
-    console.log(Cesium.Cesium3DTile);
-
-    const tileset = viewer.value.scene.primitives.add(tile);
+    const tileset = viewer.value.scene.primitives.add(buildModel.value);
 
     tileset.readyPromise.then((tile) => {
       viewer.value.zoomTo(tile);

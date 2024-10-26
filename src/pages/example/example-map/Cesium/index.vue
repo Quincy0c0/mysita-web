@@ -43,10 +43,13 @@
   import PointFocus from './PointFocus.vue';
   import { useExampleStore } from '@/stores/example';
   import { storeToRefs } from 'pinia';
+  import * as Cesium from 'cesium';
 
-  import { ref } from 'vue';
+  import { ref, onMounted } from 'vue';
+  import { useCesiumStore } from '@/stores/cesium';
 
   const { selectedExample, allExampleList } = storeToRefs(useExampleStore());
+  const { buildModel } = storeToRefs(useCesiumStore());
 
   const exampleList = ref(allExampleList.value.map.cesium);
 
@@ -59,6 +62,12 @@
       }
     });
   };
+
+  onMounted(async () => {
+    buildModel.value = new Cesium.Cesium3DTileset({
+      url: '/tileset/tileset.json',
+    });
+  });
 </script>
 <style scoped>
   @import '/src/assets//style/icon.css';

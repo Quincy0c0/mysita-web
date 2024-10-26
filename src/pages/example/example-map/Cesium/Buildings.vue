@@ -6,15 +6,20 @@
 
 <script setup>
   import { onMounted, onBeforeUnmount, ref } from 'vue';
+  import { useCesiumStore } from '@/stores/cesium';
+  import { storeToRefs } from 'pinia';
+
   import * as Cesium from 'cesium';
   import 'cesium/Build/Cesium/Widgets/widgets.css';
   import vertexShader from '/src/shaders/movingRingShader/vs';
   import fragmentShader from '/src/shaders/movingRingShader/fs';
   import { TencentImageryProvider } from '@cesium-china/cesium-map';
 
+  const { buildModel } = storeToRefs(useCesiumStore());
+
   const viewer = ref(null);
 
-  onMounted(() => {
+  onMounted(async () => {
     // 设置基础URL
     viewer.value = new Cesium.Viewer('cesiumContainer', {
       timeline: false,
@@ -55,11 +60,7 @@
       Cesium.CameraEventType.LEFT_DRAG,
     ];
 
-    const tile = new Cesium.Cesium3DTileset({
-      url: '/tileset/tileset.json',
-    });
-
-    const tileset = viewer.value.scene.primitives.add(tile);
+    const tileset = viewer.value.scene.primitives.add(buildModel.value);
 
     tileset.readyPromise.then((tile) => {
       viewer.value.zoomTo(tile);
