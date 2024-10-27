@@ -53,7 +53,7 @@
       Cesium.CameraEventType.LEFT_DRAG,
     ];
 
-    viewer.value.terrainProvider = Cesium.createWorldTerrain();
+    // viewer.value.terrainProvider = Cesium.createWorldTerrain();
 
     viewer.value.camera.flyTo({
       destination: Cesium.Cartesian3.fromDegrees(114.397, 30.917, 1000),

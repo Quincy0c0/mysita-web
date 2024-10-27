@@ -14,6 +14,7 @@
   import { onMounted, onBeforeUnmount, ref } from 'vue';
   import { useCesiumStore } from '@/stores/cesium';
   import { storeToRefs } from 'pinia';
+  import * as _ from 'lodash';
 
   const { buildModel } = storeToRefs(useCesiumStore());
 
@@ -60,11 +61,9 @@
       Cesium.CameraEventType.LEFT_DRAG,
     ];
 
-    const tileset = viewer.value.scene.primitives.add(buildModel.value);
+    const tile = _.cloneDeep(buildModel.value);
 
-    tileset.readyPromise.then((tile) => {
-      viewer.value.zoomTo(tile);
-      viewer.value.scene.postProcessStages.fxaa.enabled = true;
+    const loadShader = () => {
       tile.customShader = new Cesium.CustomShader({
         uniforms: {
           u_LightPosition: {
@@ -86,7 +85,40 @@
         vertexShaderText: vertexShader,
         fragmentShaderText: fragmentShader,
       });
-    });
+
+      tile.allTilesLoaded.removeEventListener(loadShader);
+    };
+
+    tile.allTilesLoaded.addEventListener(loadShader);
+
+    viewer.value.scene.primitives.add(tile);
+
+    viewer.value.zoomTo(tile);
+
+    // tileset.readyPromise.then((tile) => {
+    //   viewer.value.scene.postProcessStages.fxaa.enabled = true;
+    //   tile.customShader = new Cesium.CustomShader({
+    //     uniforms: {
+    //       u_LightPosition: {
+    //         type: Cesium.UniformType.VEC3,
+    //         value: Cesium.Cartesian3.fromDegrees(118.815023, 32.087364),
+    //       },
+    //       u_LightCol: {
+    //         type: Cesium.UniformType.VEC3,
+    //         value: new Cesium.Color.fromCssColorString('#fbc013'),
+    //       },
+    //       u_LightRadius: {
+    //         type: Cesium.UniformType.FLOAT,
+    //         value: 10000.0,
+    //       },
+    //     },
+    //     varyings: {
+    //       v_normalMC: Cesium.VaryingType.VEC3,
+    //     },
+    //     vertexShaderText: vertexShader,
+    //     fragmentShaderText: fragmentShader,
+    //   });
+    // });
     const options = {
       style: 4, //style: img、1：经典
       crs: 'WGS84', // 使用84坐标系，默认为：GCJ02,

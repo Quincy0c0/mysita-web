@@ -14,7 +14,7 @@
   const viewer = ref(null);
   const tileset = ref(null);
 
-  onMounted(() => {
+  onMounted(async () => {
     viewer.value = new Cesium.Viewer('cesiumContainer', {
       timeline: false,
       // 动画控件
@@ -65,15 +65,14 @@
     // 使用modelMatrix构造模型的位置
     const cartesian = new Cesium.Cartesian3.fromDegrees(114.3, 30.5);
     const modelMatrix = Cesium.Transforms.eastNorthUpToFixedFrame(cartesian);
-    tileset.value = viewer.value.scene.primitives.add(
-      new Cesium.Cesium3DTileset({
-        url: '/models/AGI_HQ/tileset.json',
-        modelMatrix,
-      })
+    const tile = await Cesium.Cesium3DTileset.fromUrl(
+      '/models/AGI_HQ/tileset.json'
     );
-    tileset.value.readyPromise.then((tile) => {
-      viewer.value.zoomTo(tile);
-    });
+
+    tile.modelMatrix = modelMatrix;
+
+    viewer.value.scene.primitives.add(tile);
+    viewer.value.zoomTo(tile);
 
     const stages = viewer.value.scene.postProcessStages;
 

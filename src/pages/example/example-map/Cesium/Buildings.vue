@@ -8,6 +8,7 @@
   import { onMounted, onBeforeUnmount, ref } from 'vue';
   import { useCesiumStore } from '@/stores/cesium';
   import { storeToRefs } from 'pinia';
+  import * as _ from 'lodash';
 
   import * as Cesium from 'cesium';
   import 'cesium/Build/Cesium/Widgets/widgets.css';
@@ -60,11 +61,9 @@
       Cesium.CameraEventType.LEFT_DRAG,
     ];
 
-    const tileset = viewer.value.scene.primitives.add(buildModel.value);
+    const tile = _.cloneDeep(buildModel.value);
 
-    tileset.readyPromise.then((tile) => {
-      viewer.value.zoomTo(tile);
-      viewer.value.scene.postProcessStages.fxaa.enabled = true;
+    const loadShader = () => {
       tile.customShader = new Cesium.CustomShader({
         uniforms: {
           u_nightTexture: {
@@ -80,7 +79,16 @@
         vertexShaderText: vertexShader,
         fragmentShaderText: fragmentShader,
       });
-    });
+
+      tile.allTilesLoaded.removeEventListener(loadShader);
+    };
+
+    tile.allTilesLoaded.addEventListener(loadShader);
+
+    viewer.value.scene.primitives.add(tile);
+
+    viewer.value.zoomTo(tile);
+
     const options = {
       style: 4, //style: img、1：经典
       crs: 'WGS84', // 使用84坐标系，默认为：GCJ02,

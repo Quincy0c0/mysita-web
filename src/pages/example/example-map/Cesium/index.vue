@@ -64,9 +64,9 @@
   };
 
   onMounted(async () => {
-    buildModel.value = new Cesium.Cesium3DTileset({
-      url: '/tileset/tileset.json',
-    });
+    buildModel.value = await Cesium.Cesium3DTileset.fromUrl(
+      '/tileset/tileset.json'
+    );
   });
 </script>
 <style scoped>
