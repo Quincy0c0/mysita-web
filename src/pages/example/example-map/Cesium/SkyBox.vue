@@ -8,11 +8,18 @@
   import { onMounted, onBeforeUnmount, ref } from 'vue';
   import * as Cesium from 'cesium';
   import 'cesium/Build/Cesium/Widgets/widgets.css';
-  import SkyBoxOnGround from '/src/plugins/cesium/skyBoxRepiar.js';
+  // import SkyBoxOnGround from '/src/plugins/cesium/skyBoxRepiar.js';
+
+  import px from '/skybox/02/px.jpg';
+  import nx from '/skybox/02/nx.jpg';
+  import py from '/skybox/02/py.jpg';
+  import ny from '/skybox/02/ny.jpg';
+  import pz from '/skybox/02/pz.jpg';
+  import nz from '/skybox/02/nz.jpg';
 
   const viewer = ref(null);
 
-  onMounted(() => {
+  onMounted(async () => {
     // 设置基础URL
     viewer.value = new Cesium.Viewer('cesiumContainer', {
       timeline: false,
@@ -53,7 +60,10 @@
       Cesium.CameraEventType.LEFT_DRAG,
     ];
 
-    // viewer.value.terrainProvider = Cesium.createWorldTerrain();
+    viewer.value.terrainProvider =
+      await Cesium.CesiumTerrainProvider.fromIonAssetId(1, {
+        requestVertexNormals: true,
+      });
 
     viewer.value.camera.flyTo({
       destination: Cesium.Cartesian3.fromDegrees(114.397, 30.917, 1000),
@@ -65,25 +75,15 @@
     });
     const groundSky = new Cesium.SkyBox({
       sources: {
-        positiveX: `/skyBox/02/px.jpg`,
-        negativeX: `/skyBox/02/nx.jpg`,
-        positiveY: `/skyBox/02/py.jpg`,
-        negativeY: `/skyBox/02/ny.jpg`,
-        positiveZ: `/skyBox/02/pz.jpg`,
-        negativeZ: `/skyBox/02/nz.jpg`,
+        positiveX: px,
+        negativeX: nx,
+        positiveY: py,
+        negativeY: ny,
+        positiveZ: pz,
+        negativeZ: nz,
       },
     });
 
-    // const groundSky = new SkyBoxOnGround({
-    //   sources: {
-    //     positiveX: `/skyBox/02/px.jpg`,
-    //     negativeX: `/skyBox/02/nx.jpg`,
-    //     positiveY: `/skyBox/02/py.jpg`,
-    //     negativeY: `/skyBox/02/ny.jpg`,
-    //     positiveZ: `/skyBox/02/pz.jpg`,
-    //     negativeZ: `/skyBox/02/nz.jpg`,
-    //   },
-    // });
     viewer.value.scene.skyBox = groundSky;
 
     viewer.value.scene.skyBoxNearDistance = 1.0; // 设置为您希望显示近景天空盒的相机距离
